@@ -86,7 +86,7 @@ class Scenario:
         data["Scenario"][0]["finish3"] = str(self.finish3)
 
         tmp = data["Scenario"][0]["finished"]
-        data["Scenario"][0]["finished"] = str(self.finished)
+        data["Scenario"][0]["finished"] = self.finished
 
         with open(jsonPath, "w") as data_file:
             data_file.write(json.dumps(data, indent=4,
