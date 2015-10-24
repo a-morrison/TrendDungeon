@@ -108,6 +108,9 @@ class Scenario:
             self.creature.setCreatureDamage(int(creatureDamage))
 
     def saveCreature(self):
+        if self.creature == None:
+            return None
+
         with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
 

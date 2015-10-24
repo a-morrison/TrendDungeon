@@ -139,6 +139,7 @@ class Player:
         self.level += 1
         self.totalHealth += 1
         self.giveHealth(self.totalHealth)
+        self.experiencePoints = 0
 
     """
       "Returns the player's level.
