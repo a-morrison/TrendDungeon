@@ -85,8 +85,11 @@ class Driver:
     def updatePlayer(player,item,exp,health):
         if item:
             player.item = Item()
-        player.experiencePoints+=exp
-        player.health+=health
+        player.giveExperiencePoints(exp)
+        if health>0:
+            player.giveHealth(health)
+        else:
+            player.removeHealth(health)
         player.savePlayer()
 
     """
