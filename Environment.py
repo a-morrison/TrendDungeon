@@ -4,7 +4,7 @@
 """
 from Scenario import Scenario
 
-locations = ['Cave', 'Crypt', 'Dark Forest', 'Den', 'Glade', 'Witche\'s Hut', 'Shoppe']
+locations = ['Cave', 'Crypt', 'Dark Forest', 'Glade', 'Witche\'s Hut', 'Shoppe']
 
 class Environment:
 

@@ -1,0 +1,43 @@
+{
+    "Witch Hut": [
+        {
+	    "generalText": "You arrived at the Witch {}'s Hut."
+	    "flavorText": [
+	        "You feel a chill",
+		"You hear the cry of a strange monster in the distance",
+		"The wind howls and the hut sounds a loud creak."
+		]
+	}
+    ]
+    "Cave": [
+        {
+	    "generalText": "You arrived at the cave of {}."
+	    "flavorText": [
+	        "The walls of the cave echo with your footsteps.",
+		"Your hair blows in the gusts deep inside."
+		]
+	}
+    ]
+    "Crypt": [
+	{
+	    "generalText": "You arrived at the Crypt of {}."
+	    "flavorText": [
+	        "The whispers of the past tickle your ear.",
+		"You feel uneasy. Like someone is watching you."
+	    	]
+	}
+    ]
+    "Dark Forest": [
+        {
+	    "generalText": "You arrived at the Dark Forest of {}."
+	    "flavorText": [
+	        "You see pairs of eyes in the distant dark.",
+		"The trees thrash in the howling wind around you."
+		]
+	}
+    ]
+    "Den": [
+        {
+	    "generalText": "You arrived at {}'s den."
+	    "flavorText": [
+	        "
