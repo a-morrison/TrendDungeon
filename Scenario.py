@@ -45,13 +45,13 @@ class Scenario:
         self.option3 = str(option3)
 
         finish1 = data["Scenario"][0]["finish1"]
-        self.finish1 = (list)(finish1)
+        self.finish1 = finish1
 
         finish2 = data["Scenario"][0]["finish2"]
-        self.finish2 = (list)(finish2)
+        self.finish2 = finish2
 
         finish3 = data["Scenario"][0]["finish3"]
-        self.finish3 = (list)(finish3)
+        self.finish3 = finish3
 
         finished = data["Scenario"][0]["finished"]
         self.finished = bool(finished)
@@ -78,13 +78,13 @@ class Scenario:
         data["Scenario"][0]["option3"] = str(self.option3)
 
         tmp = data["Scenario"][0]["finish1"]
-        data["Scenario"][0]["finish1"] = self.finish1
+        data["Scenario"][0]["finish1"] = (list)(self.finish1)
 
         tmp = data["Scenario"][0]["finish2"]
-        data["Scenario"][0]["finish2"] = self.finish2
+        data["Scenario"][0]["finish2"] = (list)(self.finish2)
 
         tmp = data["Scenario"][0]["finish3"]
-        data["Scenario"][0]["finish3"] = self.finish3
+        data["Scenario"][0]["finish3"] = (list)(self.finish3)
 
         tmp = data["Scenario"][0]["finished"]
         data["Scenario"][0]["finished"] = self.finished

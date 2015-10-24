@@ -73,13 +73,13 @@ def loadScenFromFile(jsonFile):
     s.option3 = str(option3)
 
     finish1 = data["Scenario"][0]["finish1"]
-    s.finish1 = str(finish1)
+    s.finish1 = finish1
 
     finish2 = data["Scenario"][0]["finish2"]
-    s.finish2 = str(finish2)
+    s.finish2 = finish2
 
     finish3 = data["Scenario"][0]["finish3"]
-    s.finish3 = str(finish3)
+    s.finish3 = finish3
 
     finished = data["Scenario"][0]["finished"]
     s.finished = bool(finished)
