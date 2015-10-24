@@ -31,7 +31,8 @@
             "generalText": "You arrived at the Crypt of {}.",
             "flavorText": [
                 "The whispers of the past surround you and you hear the growls of the undead deep inside.",
-                "You feel uneasy, like someone is watching you. You turn around and see a shadow run deep inside."
+                "You feel uneasy, like someone is watching you. You turn around and see a shadow run deep inside.",
+		"You see a small, yellow glint near the sarcophagus in the center."
                 ]
         },
     "Dark Forest":
@@ -39,15 +40,17 @@
             "generalText": "You arrived at the Dark Forest of {}.",
             "flavorText": [
                 "You see several pairs of eyes in the dark that slowly move all around you. Think fast.",
-                "The trees surge in the wind around you as you hear the horrible scream of a ghoul."
+                "The trees surge in the wind around you as you hear the horrible scream of a ghoul.",
+		"The forest is strangly peaceful and quiet... a little too quiet."
                 ]
         },
     "Swamp":
         {
-	     "generalText": "You arrived at {}'s Swamp.",
+	    "generalText": "You arrived at {}'s Swamp.",
             "flavorText": [
                 "There is a warm breath on your neck and you hear in a faint but strong voice, \"This is my swamp\".",
-                "The song of frogs and crickets play around you. You strangely feel at peace as you catch your breath."
+                "The song of frogs and crickets play around you. You strangely feel at peace as you catch your breath.",
+		"The wild insects are so thick you can barley see in front of you. Not the best place to be."
                 ]
 
         },
@@ -56,7 +59,8 @@
             "generalText": "You arrived at {}'s Canyon.",
             "flavorText": [
                 "There is a dense fog at the bottom of the canyon and a wind that almost pushed you over the edge.",
-                "The howl of a coyote echoes. You see a group of skeletons patrol at the bottom, but you are safe."
+                "The howl of a coyote echoes. You see a group of skeletons patrol at the bottom, but you are safe.",
+		"You see a fast and wild stream at the bottom along with a goblin encampment. Too dangerous to stay."
                 ]
         },
     "Cliff":
@@ -64,7 +68,8 @@
             "generalText": "You arrived at {}'s Cliff.",
             "flavorText": [
                 "The rocky cliff face makes you nervous, but you look over the edge to see a dark forest below.",
-                "You take advantage of the views and you rest."
+                "You take advantage of the views and you rest.",
+		"It overlooks a deep, dark blue ocean with jagged rocks at the bottom. Not a nice landing pad."
                 ]
         },
     "Shoppe":
@@ -72,7 +77,8 @@
             "generalText": "You arrived at {}'s Shoppe.",
             "flavorText": [
                 "You take in ease in the fact you can now rest and look at the wares.",
-                "The shopkeep gives you an uneasy look. You probably shouldn't stay long."
+                "The shopkeep gives you an uneasy look. You probably shouldn't stay long.",
+		"The shopkeep gives you an unfavorale feeling. Probably not the best idea to stick around."
                 ]
         }
 }
