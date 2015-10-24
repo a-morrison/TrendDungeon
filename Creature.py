@@ -16,4 +16,4 @@ class Creature:
 def __init___(self):
         self.monster = random.choice(creatures)
         self.attack = random.random(1,3)+Player.getLevel()
-        self.hp = random.random(4,6)+Player.getLevel()
+        self.hp = random.random(3,6)+Player.getLevel()
