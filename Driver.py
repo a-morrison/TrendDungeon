@@ -190,7 +190,7 @@ class Driver:
 
     def followUpTweet(self, option):
         msg = "{}"
-        msg.format(self.scen.getFinished(option))
+        msg.format(self.scen.getFinished(option)[0])
         print msg #api.update_status(status = msg)
         time.sleep(sleepTime)
 
