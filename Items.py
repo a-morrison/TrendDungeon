@@ -7,7 +7,7 @@ itemTypes = ['Sword','Crystal','Hammer','Bow','Lute']
 """
 Item class for weapons that the player can have
 """
-class Item:
+class Items:
     name = ""
     damage = 0
     def __init__(self):
