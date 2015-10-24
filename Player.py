@@ -4,6 +4,7 @@
 """
 
 import json
+from Items import Items
 
 jsonPath = "./json/player.json"
 
