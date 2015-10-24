@@ -15,7 +15,7 @@ class Creature:
     attack = 0
     hp = 0
     
-    def __init___(self):
+    def __init__(self):
         if Player.getLevel() <= 5:
             self.monster = random.choice(lowtier)
         elif Player.getLevel() <=10:
