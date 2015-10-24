@@ -15,3 +15,10 @@ class Environment:
     def saveScenario(self, scenario):
 
     def generateScenario(self, trend):
+        
+    def getNoun(self, trend):
+        trendList = list(trend)
+        if trendList[0] != '#':
+            trendList[0] = '#'
+        trendStr = ''.join(trendList)
+        return trendStr
