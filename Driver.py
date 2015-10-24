@@ -46,19 +46,23 @@ class Driver:
     Method to post the Announce Tweet using API
     """
     def announceTweet(self):
-
+        msg = "The trend for this encounter is {}! Prepare for adventure!"
+        msg.format(self.trend)
+        api.update_status(status = msg)
 
     """
     Method to post the Scenario Tweet using API
     """
     def scenarioTweet(self):
-
+        api.update_status(status = scen)
 
     """
     Method to post the Status Tweet using API
     """
     def statusTweet(self):
-
+        msg = "You have {0.health} Health, {0.experiencePoints} XP, and are level {0.level}. You currently have the {0.item} Item."
+        msg.format(self.p)
+        api.update_status(status = msg)
 
     """
     Method to post the Option Tweet using API
