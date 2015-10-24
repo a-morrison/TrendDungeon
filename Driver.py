@@ -1,7 +1,7 @@
 import tweepy
 import Passwords as passwords
 import Player
-import Enviroment
+import Environment
 import Scenario
 import Items
 import json
@@ -43,7 +43,7 @@ def getReplies(lastID):
         break
 
     if countOne>countTwo and countOne>countThree:
-        return 1;
+        return 1
     elif countTwo>countThree:
         return 2
     else:
@@ -56,9 +56,9 @@ def getReplies(lastID):
 """
 
 class Driver:
-    self.p          #the player
-    self.trend      #the Trending topic
-    self.scen       #the scenerio to do next
+    p          #the player
+    trend      #the Trending topic
+    scen       #the scenerio to do next
     """
     Constructor
     """
@@ -90,6 +90,8 @@ class Driver:
     Method to get the random trend to use on this run
     """
     def getTrend():
+        str = input("Trend?")
+        return str
         trendsJSON = api.trends_place(1)
         trends = trendsJSON[0]
         x = random.randint(0,9)
@@ -127,7 +129,7 @@ class Driver:
     Method to post the Option Tweet using API
     """
     def optionsTweet(self):
-        msg = "Follow and reply with #1 to {0.option1}, #2 to {0.option2}"
+        msg = "{0.encounterText} Follow and reply with #1 to {0.option1}, #2 to {0.option2}"
         if scen.option3 != None:
             msg+=" , or #3 to {0.option3}!"
         else:
