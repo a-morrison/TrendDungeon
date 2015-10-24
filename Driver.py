@@ -2,6 +2,7 @@ import tweepy
 import Passwords as passwords
 import Player
 import Enviroment
+import Scenario
 import json
 
 
@@ -14,15 +15,14 @@ auth.set_access_token(passwords.access_token, passwords.access_token_secret)
 
 api = tweepy.API(auth)
 
-countOne = 0;
-countTwo = 0;
-countThree = 0;
 
-
-
-def getOptions():
-    for user in tweepy.Cursor(api.followers()).items():
-        for tweet in tweepy.Cursor(api.user_timeline(user), count = 20):
+def getReplies():
+    countOne = 0;
+    countTwo = 0;
+    countThree = 0;
+    for user in tweepy.Cursor(api.followers, screen_name = "TrendDungeon").items():
+        for tweet in tweepy.Cursor(api.user_timeline, screen_name= user.screen_name, count = 20).items():
+            print tweet.text
             if tweet.text.find('#1')>=0:
                 countOne+=1
                 break
@@ -34,7 +34,12 @@ def getOptions():
                 break
         break
 
-    return max(countOne,countTwo,countThree)
+    if countOne>countTwo and countOne>countThree:
+        return 1;
+    elif countTwo>countThree:
+        return 2
+    else:
+        return 3
 
 
 """
@@ -56,9 +61,9 @@ class Driver:
         self.trend = self.getTrend()
         self.scen = Enviroment.loadScenario()
         if self.scen.finished:
-            followUpTweet(self,getOption())
-            self.scen = Enviroment.scenerio(self.trend)
-            Enviroment.write(scen)
+            followUpTweet(self,getReplies())
+            self.scen = Enviroment.generateScenerio(self.trend)
+            Enviroment.saveScenario(scen)
 
     """
     Method to get the random trend to use on this run
@@ -88,7 +93,9 @@ class Driver:
     Method to post the Status Tweet using API
     """
     def statusTweet(self):
-        msg = "You have {0.health} Health, {0.experiencePoints} XP, and are level {0.level}. You currently have the {0.item} Item."
+        msg = "You have {0.health} Health, {0.experiencePoints} XP, and are level {0.level}."
+        if p.item != None:
+            msg+=" You currently have the {0.item} Item."
         msg.format(self.p)
         api.update_status(status = msg)
 
@@ -96,7 +103,11 @@ class Driver:
     Method to post the Option Tweet using API
     """
     def optionsTweet(self):
-        msg = "Follow and reply with #1 to {0.option1} or #2 to {0.option2}!"
+        msg = "Follow and reply with #1 to {0.option1}, #2 to {0.option2}"
+        if scen.option3 != None:
+            msg+=" , or #3 to {0.option3}!"
+        else:
+            msg+= "!"
         msg.format(scen)
         api.update_status(status = msg)
 

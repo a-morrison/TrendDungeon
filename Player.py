@@ -13,6 +13,7 @@ class Player:
     currentHealth = 0
     experiencePoints = 0
     damage = 0
+    item = 0
 
     def __init__(self, jsonPath):
         self.loadPlayer(jsonPath)
@@ -39,6 +40,9 @@ class Player:
         damage = data["Player"][0]["damage"]
         self.damage = int(damage)
 
+        item = data["Player"][0]["item"]
+        self.item = str(item)
+
     """
       "Writes player data to json file.
     """
@@ -59,7 +63,10 @@ class Player:
         data["Player"][0]["experiencePoints"] = str(self.experiencePoints)
 
         tmp = data["Player"][0]["damage"]
-        data["Player"][0]["damage"]
+        data["Player"][0]["damage"] = str(self.damage)
+
+        tmp = data["Player"][0]["item"]
+        data["Player"][0]["item"] = str(self.item)
 
         with open(jsonPath, "w") as data_file:
             data_file.write(json.dumps(data, indent=4, 
