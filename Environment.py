@@ -18,6 +18,11 @@ class Environment:
         
     def getNoun(self, trend):
         trendList = list(trend)
+        for x in trendList:
+            if x.isupper():
+                for y in trendList:
+                    if y.isupper() and y != x:
+                        trendList[x:y-1]
         if trendList[0] != '#':
             trendList[0] = '#'
         trendStr = ''.join(trendList)
