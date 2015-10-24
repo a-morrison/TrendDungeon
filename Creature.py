@@ -1,4 +1,4 @@
-import Player
+from Player import Player
 import random
 
 """
@@ -14,19 +14,20 @@ class Creature:
     monster = ""
     attack = 0
     hp = 0
-    
+
     def __init__(self):
-        if Player.getLevel() <= 5:
+        player = Player('./json/player.json')
+        if player.getLevel() <= 5:
             self.monster = random.choice(lowtier)
-        elif Player.getLevel() <=10:
+        elif player.getLevel() <=10:
             self.monster = random.choice(midtier)
         else:
             self.monster = random.choice(hightier)
-            
-        self.attack = random.random(1,3)+Player.getLevel()
-        self.hp = random.random(3,6)+Player.getLevel()
 
-    def getCreautreType(self):
+        self.attack = random.randint(1,3)+player.getLevel()
+        self.hp = random.randint(3,6)+player.getLevel()
+
+    def getCreatureType(self):
         return str(self.monster)
 
     def setCreatureType(self, monster):

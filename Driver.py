@@ -44,9 +44,9 @@ def getReplies(lastID):
                 break
         break
 
-    if countOne>countTwo and countOne>countThree:
+    if countOne>=countTwo and countOne>=countThree:
         return 1
-    elif countTwo>countThree:
+    elif countTwo>=countThree:
         return 2
     else:
         return 3
@@ -73,20 +73,21 @@ class Driver:
         #print self.trend
         self.scen = Scenario()
         self.scen.loadFromFile(savedScenJSON)
-        if self.scen.finished or self.scen.initial == None:
+        if self.scen.finished:
             self.followUpTweet(getReplies(self.p.lastID))
             item = self.scen.getItem()
             exp = self.scen.amountXP()
             health = self.scen.amountHealth()
             updatePlayer(self.p,item,exp,health)
-            self.scen = Enviroment.generateScenerio(self.trend)
-            self.scen.saveToFile()
+        tempEnviro = Environment(self.trend)
+        self.scen = tempEnviro.generateScenario(self.trend).saveScenario()
+        self.scen.loadFromFile(savedScenJSON)
 
 
     def updatePlayer(self,player,item,exp,health):
         if item:
             player.item = Items(None)
-        player.giveExperiencePoints(exp)
+        player.giveExperiencePoints(exp/player.level)
         if health>0:
             player.giveHealth(health)
         else:

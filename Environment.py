@@ -19,38 +19,39 @@ class Environment:
     option1 = ""
     option2 = ""
     option3 = ""
-    finished1 = []
-    finished2 = []
-    finished3 = []
-    currentScenario = None
+    finished1 = [None,None,None,None]
+    finished2 = [None,None,None,None]
+    finished3 = [None,None,None,None]
+    scenario = None
     creature = None
 
     def __init__(self, trend):
         self.trend = trend
+        self.scenario = Scenario()
 
     def loadScenario(self, scenario):
         self.currentScenario = scenario
 
     def saveScenario(self):
-        self.scenario.setInitial(generalText)
-        self.scenario.setFlavorText(flavorText)
-        self.scenario.setOptionOne(option1)
-        self.scenario.setOptionTwo(option2)
-        self.scenario.setOptionThree(option3)
-        self.scenario.setFinishedOne(finished1)
-        self.scenario.setFinishedTwo(finished2)
-        self.scenario.setFinishedThree(finished3)
+        self.scenario.setInitial(self.generalText)
+        self.scenario.setFlavorText(self.flavorText)
+        self.scenario.setOptionOne(self.option1)
+        self.scenario.setOptionTwo(self.option2)
+        self.scenario.setOptionThree(self.option3)
+        self.scenario.setFinishedOne(self.finished1)
+        self.scenario.setFinishedTwo(self.finished2)
+        self.scenario.setFinishedThree(self.finished3)
         self.scenario.saveToFile()
 
     def generateScenario(self, trend):
         self.location = random.choice(locations)
         self.getGeneralText(trend)
 
-        encounterChance = randint(0,100)
+        encounterChance = random.randint(0,100)
         self.flavorText = self.getFlavorText()
 
-        if location == "Shoppe":
-            self.shoppeEncouter()
+        if self.location == "Shoppe":
+            self.shoppeEncounter()
         else:
             if encounterChance <= 20:
                 self.exploreRoom()
@@ -58,6 +59,7 @@ class Environment:
                 self.giveItem()
             else:
                 self.startEncounter()
+        return self
 
     def giveItem(self):
         self.scenario.hasItem = True
@@ -71,34 +73,34 @@ class Environment:
             addedText = self.getFlavorText()
 
         self.flavorText = self.flavorText + " " + addedText
-        self.finished1[0] = "You leave the {}.".format(location)
-        self.finished1[1] = True
-        self.finished1[2] = 0
-        self.finished1[3] = 0
+        self.finished1[0]=("You leave the {}.".format(self.location))
+        self.finished1[1]=(True)
+        self.finished1[2]=(0)
+        self.finished1[3]=(0)
 
     def startEncounter(self):
         self.spawnCreature()
 
         option1 = "Fight"
         option2 = "Flee"
-        
+
         self.setEncounterOptionOne()
         self.setEncounterOptionTwo()
 
     def getCurrentCreatureHealth(self):
-        return self.creatrue.getCreatureHealth()
+        return self.creature.getCreatureHealth()
 
     def setEncounterOptionOne(self):
         self.finished1[0] = "You defeat the {}!".format(self.creature.getCreatureType())
-        self.finished1[1] = True
-        self.finished1[2] = 20
-        self.finished1[3] = self.creature.getCreatureDamage()
+        self.finished1[1]=(True)
+        self.finished1[2]=(20)
+        self.finished1[3]=(self.creature.getCreatureDamage())
 
     def setEncounterOptionTwo(self):
-        self.finished2[0] = "You attempt to flee from the {}!".formate(self.creature.getCreatureType())
-        self.finished2[1] = False
-        self.finished2[2] = 0
-        self.finished2[3] = self.creature.getCreatureDamage()
+        self.finished2[0]=("You attempt to flee from the {}!".format(self.creature.getCreatureType()))
+        self.finished2[1]=(False)
+        self.finished2[2]=(0)
+        self.finished2[3]=(self.creature.getCreatureDamage())
 
     def shoppeEncounter(self):
         self.option1 = "Take Item"
@@ -109,7 +111,7 @@ class Environment:
             addedText - self.getFlavorText()
 
         self.flavorText = self.flavorText + " " + addedText
-        self.finished1 = "You leave the {}.".format(location)
+        self.finished1 = "You leave the {}.".format(self.location)
 
     def getGeneralText(self, trend):
         with open(jsonPath, "r") as data_file:
@@ -126,7 +128,7 @@ class Environment:
         flavorText = data[self.location]["flavorText"][random.randint(0,length-1)]
         return flavorText
 
-    def spawCreature(self):
+    def spawnCreature(self):
         self.creature = Creature()
 
     def getNoun(self, trend):
