@@ -81,6 +81,8 @@ class Driver:
         trendsJSON = api.trends_place(1)
         trends = trendsJSON[0]
         x = random.randint(0,9)
+        while (len(trends['trends'][x]['name']) <= 15):
+           x = random.randint(0,9)
         return trends['trends'][x]['name']
 
     """
