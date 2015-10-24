@@ -15,6 +15,12 @@ class Environment:
     location = ''
     generalText = ""
     flavorText = ""
+    option1 = ""
+    option2 = ""
+    option3 = ""
+    finished1 = ""
+    finished2 = ""
+    finished3 = ""
     currentScenario = None
     creature = None 
 
@@ -28,7 +34,7 @@ class Environment:
         self.scenario.setInitial(generalText)
         self.scenario.setFlavorText(flavorText)
         self.scenario.setOptionOne(option1)
-        slef.scenario.setOptionTwo(option2)
+        self.scenario.setOptionTwo(option2)
         self.scenario.setOptionThree(option3)
         self.scenario.setFinishedOne(finished1)
         self.scenario.setFinishedTwo(finished2)
@@ -40,7 +46,7 @@ class Environment:
         self.getGeneralText(trend)
 
         encounterChance = randint(0,100)
-        self.getFlavorText()
+        self.flavorText = self.getFlavorText()
         
         if location == "Shoppe":
             self.shoppeEncouter()
@@ -56,7 +62,15 @@ class Environment:
         self.scenario.hasItem = True
 
     def exploreRoom(self):
-        
+        self.option1 = "Leave"
+        addedText = self.getFlavorText()
+
+        while addedText == self.flavorText:
+            addedText = self.getFlavorText()
+
+        self.flavorText = self.flavorText + " " + addedText
+        self.finished1 = "You leave the {}.".format(location)
+
     def startEncounter(self):
         self.spawnCreature()
     
@@ -75,7 +89,7 @@ class Environment:
 
         length = len(data[self.location]["flavorText"])
         flavorText = data[self.location]["flavorText"][random.randint(0,length-1)
-        self.flavorText = flavorText
+        return flavorText
 
     def spawCreature(self):
         self.creature = Creature()
