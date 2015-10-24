@@ -1,72 +1,76 @@
 {
+    "Intro":
+        {
+            "generalText": "You wake up.",
+            "flavorText": [
+                "Cold, alone, and without a weapon, you hear the sound of monsters behind you. You need to move fast. How do you proceed?",
+                "There is a loud crash. A large Golem has destroyed the nearby village and will be coming your way soon. How do you proceed?",
+                "You are in a dark forest with no recollection of how you got there. The laugh of a witch resonates. How do you proceed?"
+            ]
+        },
     "Witch Hut":
         {
-	    "generalText": "You arrived at the Witch {}'s Hut.",
-	    "flavorText": [
-	        "You feel a chill",
-		"You hear the cry of a strange monster in the distance",
-		"The wind howls and the hut sounds a loud creak."
-		]
-	},
+            "generalText": "You arrived at the Witch {}'s Hut.",
+            "flavorText": [
+                "You lie low so you are not to be seen or else fight. You hear a strange monster behind you.",
+                "The hut creaks in the howling wind. You feel uneasy to move any closer."
+            ]
+        },
     "Cave":
         {
-	    "generalText": "You arrived at the cave of {}.",
-	    "flavorText": [
-	        "The walls of the cave echo with your footsteps.",
-		"Your hair blows in the gusts deep inside."
-		]
-	},
+            "generalText": "You arrived at the Cave of {}.",
+            "flavorText": [
+                "The walls of the cave echo with your footsteps and you hear the babble of a stream deep inside.",
+                "Your hair blows in the gusts from inside the cave. As you approach you hear the growl of a beast."
+                ]
+        },
     "Crypt": {
-	    "generalText": "You arrived at the Crypt of {}.",
-	    "flavorText": [
-	        "The whispers of the past tickle your ear.",
-		"You feel uneasy. Like someone is watching you."
-	    	]
-	},
+            "generalText": "You arrived at the Crypt of {}.",
+            "flavorText": [
+                "The whispers of the past surround you and you hear the growls of the undead deep inside.",
+                "You feel uneasy, like someone is watching you. You turn around and see a shadow run deep inside."
+                ]
+        },
     "Dark Forest":
         {
-	    "generalText": "You arrived at the Dark Forest of {}.",
-	    "flavorText": [
-	        "You see pairs of eyes in the distant dark.",
-		"The trees thrash in the howling wind around you."
-		]
-	},
+            "generalText": "You arrived at the Dark Forest of {}.",
+            "flavorText": [
+                "You see several pairs of eyes in the dark that slowly move all around you. Think fast.",
+                "The trees surge in the wind around you as you hear the horrible scream of a ghoul."
+                ]
+        },
     "Swamp":
         {
-	    "generalText": "You arrived at {}'s Swamp.",
-	    "flavorText": [
-	        "You hear a faint but strong voice, \"This is my swamp\".",
-		"The song of frogs and crickets put you at slight ease."
-		]
+	     "generalText": "You arrived at {}'s Swamp.",
+            "flavorText": [
+                "There is a warm breath on your neck and you hear in a faint but strong voice, \"This is my swamp\".",
+                "The song of frogs and crickets play around you. You strangely feel at peace as you catch your breath."
+                ]
 
-	},
+        },
     "Canyon":
         {
-	    "generalText": "You arrived at {}'s Canyon.",
-	    "flavorText": [
-	        "There is a dense fog at the bottom of the canyon.",
-		"You here the howl of a coyote that echos across the canyon."
-		]
-	},
+            "generalText": "You arrived at {}'s Canyon.",
+            "flavorText": [
+                "There is a dense fog at the bottom of the canyon and a wind that almost pushed you over the edge.",
+                "The howl of a coyote echoes. You see a group of skeletons patrol at the bottom, but you are safe."
+                ]
+        },
     "Cliff":
         {
-	    "generalText": "You arrived at {}'s Cliff.",
-	    "flavorText": [
-	        "The rocky cliff face makes you very nervous to go near.",
-		"You look over the edge to the dark forest below."
-		]
-	},
+            "generalText": "You arrived at {}'s Cliff.",
+            "flavorText": [
+                "The rocky cliff face makes you nervous, but you look over the edge to see a dark forest below.",
+                "You take advantage of the views and you rest."
+                ]
+        },
     "Shoppe":
         {
-	    "generalText": "You arrived at {}'s Shoppe.",
-	    "flavorText": [
-	        "You take in ease in the fact you can now rest.",
-		"The shopkeep gives you an uneasy look."
-		]
-	}
-<<<<<<< HEAD
-    ]
-=======
-
->>>>>>> 32f6bd6283120434f1002ec56fa6feaf847d6b58
+            "generalText": "You arrived at {}'s Shoppe.",
+            "flavorText": [
+                "You take in ease in the fact you can now rest and look at the wares.",
+                "The shopkeep gives you an uneasy look. You probably shouldn't stay long."
+                ]
+        }
+    }
 }
