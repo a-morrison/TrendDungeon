@@ -74,8 +74,8 @@
         },
     "Castle":
 	{
-	    "generalText": "You	arrived	at the Castle of {}.",
-            "flavorText":[
+	    "generalText": "You arrived at the Castle of {}.",
+      "flavorText":[
 	        "Clearly empty, the castle looms over the flat valley. It seems okay to explore.",
 		"Signs of a large battle scar the landscape. At first glance it seems to be empty."
     ]
