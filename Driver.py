@@ -85,7 +85,7 @@ class Driver:
 
     def updatePlayer(self,player,item,exp,health):
         if item:
-            player.item = Items()
+            player.item = Items(None)
         player.giveExperiencePoints(exp)
         if health>0:
             player.giveHealth(health)
@@ -116,7 +116,7 @@ class Driver:
     def statusTweet(self):
         msg = "You have {0.currentHealth} Health, {0.experiencePoints} XP, and are level {0.level}."
         if self.p.item.name != "":
-            msg+=" You currently have the {0.item} Item."
+            msg+=" You currently have the {0.item.name} Item."
         msg = msg.format(self.p)
         print msg #api.update_status(status = msg)
         time.sleep(sleepTime)
