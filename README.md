@@ -1,6 +1,7 @@
 # TrendDungeon
 
-
+Trend Dungeon is a twitter focused web game that compiles
+user feedback into game decisions. 
 
 ## Creators
 
