@@ -150,6 +150,6 @@ class Player:
     """
     def isDead(self):
         if self.currentHealth <= 0:
-            return true
+            return True
         else:
-            return false
+            return False
