@@ -92,7 +92,7 @@ class Scenario:
             data_file.write(json.dumps(data, indent=4,
                             separators=(', ', ': ')))
 
-        self.saveCreaure()
+        self.saveCreature()
 
     def loadCreature(self):
         with open(jsonPath, "r") as data_file:
@@ -126,9 +126,9 @@ class Scenario:
 
     def setCreature(self, creature):
         self.creature = creature
-    
+
     def getEncounterText(self):
-        encounterText = initial + " " + flavorText
+        encounterText = self.initial + " " + self.flavorText
         return encounterText
 
     def setInitial(self, newInitial):

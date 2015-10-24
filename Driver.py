@@ -114,7 +114,7 @@ class Driver:
     """
     def statusTweet(self):
         msg = "You have {0.currentHealth} Health, {0.experiencePoints} XP, and are level {0.level}."
-        if self.p.item != None:
+        if self.p.item != None and self.p.item !=0:
             msg+=" You currently have the {0.item} Item."
         msg = msg.format(self.p)
         print msg #api.update_status(status = msg)
@@ -124,7 +124,8 @@ class Driver:
     Method to post the Option Tweet using API
     """
     def optionsTweet(self):
-        msg = "{0.encounterText} Follow and reply with #1 to {0.option1}"
+        temp = self.scen.getEncounterText()
+        msg = "{1} Follow and reply with #1 to {0.option1}"
         if self.scen.option2 != None:
             msg+=", #2 to {0.option2}"
         else:
@@ -133,9 +134,10 @@ class Driver:
             msg+=" , or #3 to {0.option3}!"
         else:
             msg+= "!"
-        msg = msg.format(self.scen)
-        print msg #api.update_status(status = msg)
+        msg = msg.format(self.scen,temp)
         self.scen.finished = True
+        print msg
+        return api.update_status(status = msg)
         time.sleep(sleepTime)
 
     def followUpTweet(self, option):
