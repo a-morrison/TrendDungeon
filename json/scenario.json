@@ -1,13 +1,13 @@
 {
     "Scenario": [
         {
-            "initial":None,
-            "option1":None,
-            "option2":None,
-            "option3":None,
-            "finish1":None,
-            "finish2":None,
-            "finied":0
+            "initial":null,
+            "option1":null,
+            "option2":null,
+            "option3":null,
+            "finish1":null,
+            "finish2":null,
+            "finished":false
         }
     ]
 }
