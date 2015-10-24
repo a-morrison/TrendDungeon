@@ -42,7 +42,7 @@ class Player:
         self.damage = int(damage)
 
         item = data["Player"][0]["item"]
-        self.item = str(item)
+        self.item = item
 
         lastID = data["Player"][0]["lastID"]
         self.lastID = int(lastID)
