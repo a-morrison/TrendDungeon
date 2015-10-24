@@ -20,7 +20,6 @@ class Scenario:
     finish3 = ""
     finished = False
     hasItem = False
-    scenarioText = ""
 
     def __init__(self):
         self.loadFromFile(jsonPath)
@@ -127,6 +126,10 @@ class Scenario:
 
     def setCreature(self, creature):
         self.creature = creature
+    
+    def getEncounterText(self):
+        encounterText = initial + " " + flavorText
+        return encounterText
 
     def setInitial(self, newInitial):
         self.initial = newInitial
