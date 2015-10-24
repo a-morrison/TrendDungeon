@@ -1,17 +1,16 @@
 {
     "Player": [
         {
-            "experiencePoints": "0",
-            "totalHealth": "10",
-            "currentHealth":"10",
-            "damage": "1",
-            "level": "1",
-            "lastID":0,
-            "item":
-             {
-                "name":null,
-                "damage":null
-             }
+            "experiencePoints": "0", 
+            "totalHealth": "16", 
+            "damage": "1", 
+            "item": {
+                "name": "Iron Lute of Fire", 
+                "damage": 2
+            }, 
+            "currentHealth": "16", 
+            "lastID": "1", 
+            "level": "7"
         }
     ]
 }

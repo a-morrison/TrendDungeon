@@ -131,6 +131,7 @@ class Driver:
 
 
     def updatePlayer(self,player,item,exp,health):
+        print item , exp, health
         if item:
             player.item = Items(None)
         player.giveExperiencePoints(int(exp)/int(player.level))
@@ -190,7 +191,9 @@ class Driver:
 
     def followUpTweet(self, option):
         msg = "{}"
-        msg.format(self.scen.getFinished(option)[0])
+        temp = self.scen.getFinished(option)
+        print temp
+        msg.format(temp[0])
         print msg #api.update_status(status = msg)
         time.sleep(sleepTime)
 

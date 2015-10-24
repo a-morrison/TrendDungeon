@@ -1,43 +1,36 @@
 {
     "Scenario": [
         {
-            "initial":null,
-            "creature":
-                {
-                    "type":null,
-                    "health":null,
-                    "damage":null
-                },
-            "option1":null,
-            "option2":null,
-            "option3":null,
-            "finish1":
-            {
-              "string":null,
-              "getItem":false,
-              "amountXP": 0,
-              "amountHealth":0
-            },
-            "finish2":
-            {
-              "string":null,
-              "getItem":false,
-              "amountXP": 0,
-              "amountHealth":0
-            },
-            "finish3":
-            {
-              "string":null,
-              "getItem":false,
-              "amountXP": 0,
-              "amountHealth":0
-            },
-            "finied":0,
-
-            "finished":false,
-            "flavorText":[
-              "","",""
-            ]
+            "finish3": [
+                null, 
+                null, 
+                null, 
+                null
+            ], 
+            "finied": 0, 
+            "initial": "You arrived at the Castle of #UFCDublin.", 
+            "finished": true, 
+            "creature": {
+                "health": null, 
+                "type": null, 
+                "damage": null
+            }, 
+            "finish1": [
+                "You defeat the Skeleton!", 
+                true, 
+                20, 
+                10
+            ], 
+            "finish2": [
+                "You attempt to flee from the Skeleton!", 
+                false, 
+                0, 
+                10
+            ], 
+            "flavorText": "Signs of a large battle scar the landscape. At first glance it seems to be empty.", 
+            "option2": "", 
+            "option3": "", 
+            "option1": ""
         }
     ]
 }
