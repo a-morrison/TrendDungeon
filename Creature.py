@@ -6,9 +6,10 @@ import random
 "Trend Dungeon
 """
 
-lowtier = ['Slime','Bear','Undead','Bat']
-midtier = ['Skeleton','Werewolf','Ghoul']
-hightier = ['Dragon','Wraith','Golem']
+lowtier = ['Rat','Slime','Goblin','Undead','Bat']
+midtier = ['Skeleton','Werewolf','Ghoul','Spider','Orc']
+hightier = ['Dragon','Wraith','Golem','Shade','Warlock']
+
 class Creature:
     self.monster
     self.attack
