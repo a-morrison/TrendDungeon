@@ -16,4 +16,7 @@ class Items:
         item = random.choice(itemTypes)
 
         self.name = "{} {} of {}".format(mat,item,elem)
-        self.damage = random.random(0,3)
+        self.damage = random.randint(0,3)
+
+    def toJSON(self):
+        return {'name':self.name,'damage':self.damage}

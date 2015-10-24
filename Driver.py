@@ -3,7 +3,7 @@ import Passwords as passwords
 from Player import Player
 from Environment import Environment
 from Scenario import Scenario
-import Items
+from Items import Items
 import json
 import time
 import random
@@ -66,6 +66,7 @@ class Driver:
     """
     def __init__(self):
         self.p = Player(savedPlayerJSON)
+        self.updatePlayer(self.p,True,0,0)
         if self.p.isDead():
             self.p = Player("./json/newPlayerTemplate")
         self.trend = getTrend()
@@ -82,9 +83,9 @@ class Driver:
             self.scen.saveToFile()
 
 
-    def updatePlayer(player,item,exp,health):
+    def updatePlayer(self,player,item,exp,health):
         if item:
-            player.item = Item()
+            player.item = Items()
         player.giveExperiencePoints(exp)
         if health>0:
             player.giveHealth(health)
@@ -114,7 +115,7 @@ class Driver:
     """
     def statusTweet(self):
         msg = "You have {0.currentHealth} Health, {0.experiencePoints} XP, and are level {0.level}."
-        if self.p.item != None and self.p.item !=0:
+        if self.p.item.name != "":
             msg+=" You currently have the {0.item} Item."
         msg = msg.format(self.p)
         print msg #api.update_status(status = msg)
