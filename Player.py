@@ -45,7 +45,7 @@ class Player:
         self.item = str(item)
 
         lastID = data["Player"][0]["lastID"]
-        self.item = int(lastID)
+        self.lastID = int(lastID)
 
     """
       "Writes player data to json file.

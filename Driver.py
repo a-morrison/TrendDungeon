@@ -73,13 +73,13 @@ class Driver:
         self.scen = Scenario()
         self.scen.loadFromFile(savedScenJSON)
         if self.scen.finished or self.scen.initial == None:
-            followUpTweet(self,getReplies(p.lastID))
-            item = scen.getItem()
-            exp = scen.amountXP()
-            health = scen.amountHealth()
-            updatePlayer(p,item,exp,health)
+            self.followUpTweet(getReplies(self.p.lastID))
+            item = self.scen.getItem()
+            exp = self.scen.amountXP()
+            health = self.scen.amountHealth()
+            updatePlayer(self.p,item,exp,health)
             self.scen = Enviroment.generateScenerio(self.trend)
-            scen.saveToFile()
+            self.scen.saveToFile()
 
 
     def updatePlayer(player,item,exp,health):
@@ -142,7 +142,7 @@ class Driver:
 
     def followUpTweet(self, option):
         msg = "{}"
-        msg.format(scen.getFinish(option))
+        msg.format(self.scen.getFinished(option))
         print msg #api.update_status(status = msg)
         time.sleep(sleepTime)
 
