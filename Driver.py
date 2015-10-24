@@ -164,6 +164,7 @@ def main():
     driver.announceTweet()
     driver.scenarioTweet()
     driver.statusTweet()
+    driver.optionsTweet()
     driver.p.lastID = 1 #driver.optionsTweet().id
     driver.p.savePlayer()
     driver.scen.saveToFile()
