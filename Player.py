@@ -42,7 +42,7 @@ class Player:
         self.damage = int(damage)
 
         item = data["Player"][0]["item"]
-        self.item = item
+        self.item = Items(item)
 
         lastID = data["Player"][0]["lastID"]
         self.lastID = int(lastID)
@@ -68,6 +68,9 @@ class Player:
 
         tmp = data["Player"][0]["damage"]
         data["Player"][0]["damage"] = str(self.damage)
+
+        tmp = data["Player"][0]["item"]
+        data["Player"][0]["item"] = self.item.toJSON()
 
         tmp = data["Player"][0]["lastID"]
         data["Player"][0]["lastID"] = str(self.lastID)
