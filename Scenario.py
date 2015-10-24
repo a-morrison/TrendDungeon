@@ -5,6 +5,7 @@
 
 import json
 import Creature
+import random
 
 jsonPath = "./json/scenario.json"
 
