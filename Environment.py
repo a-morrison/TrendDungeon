@@ -87,7 +87,7 @@ class Environment:
             addedText - self.getFlavorText()
 
         self.flavorText = self.flavorText + " " + addedText
-        self.finished1 = "You leave the {}.".formate(location)
+        self.finished1 = "You leave the {}.".format(location)
 
     def getGeneralText(self, trend):
         with open(jsonPath, "r") as data_file:
