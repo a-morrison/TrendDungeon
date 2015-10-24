@@ -8,8 +8,8 @@ itemTypes = ['Sword','Crystal','Hammer','Bow','Lute']
 Item class for weapons that the player can have
 """
 class Item:
-    self.name
-    self.damage
+    name = ""
+    damage = 0
     def __init__(self):
         elem = random.choice(elements)
         mat = random.choice(materials)
