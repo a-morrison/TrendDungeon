@@ -40,14 +40,37 @@
         {
 	    "generalText": "You arrived at {}'s Swamp."
 	    "flavorText": [
-	        "You a faint but strong voice, \"This is my swamp\"."
+	        "You hear a faint but strong voice, \"This is my swamp\".",
 		"The song of frogs and crickets put you at slight ease."
 		]
 		
 	}
     ]
-    "Glade": [
+    "Canyon": [
         {
 	    "generalText": "You arrived at {}'s Canyon."
 	    "flavorText": [
-	        "
+	        "There is a dense fog at the bottom of the canyon.",
+		"You here the howl of a coyote that echos across the canyon."
+		]
+	}
+    ]
+    "Cliff": [
+        {
+	    "generalText": "You arrived at {}'s Cliff."
+	    "flavorText": [
+	        "The rocky cliff face makes you very nervous to go near.",
+		"You look over the edge to the dark forest below."
+		]
+	}
+    ]
+    "Shoppe": [
+        {
+	    "generalText": "You arrived at {}'s Shoppe.",
+	    "flavorText": [
+	        "You take in ease in the fact you can now rest."
+		"The shopkeep gives you an uneasy look."
+		]
+	}
+    ]
+}
