@@ -103,22 +103,22 @@ class Scenario:
         creatureDamage = data["Scenario"][0]["creature"]["damage"]
 
         if creatureType != None:
-            creature.setCreatureType(creatureType)
-            creature.setCreatureHealth(int(creatureHealth))
-            creature.setCreatureDamage(int(creatureDamage))
+            self.creature.setCreatureType(creatureType)
+            self.creature.setCreatureHealth(int(creatureHealth))
+            self.creature.setCreatureDamage(int(creatureDamage))
 
     def saveCreature(self):
         with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
 
         tmp = data["Scenario"][0]["creature"]["type"]
-        data["Scenario"][0]["creature"]["type"] = str(creature.getCreatureType)
+        data["Scenario"][0]["creature"]["type"] = str(self.creature.getCreatureType)
 
         tmp = data["Scenario"][0]["creature"]["health"]
-        data["Scenario"][0]["creature"]["health"] = int(creature.getCreatureHealth)
+        data["Scenario"][0]["creature"]["health"] = int(self.creature.getCreatureHealth)
 
         tmp = data["Scenario"][0]["creature"]["damage"]
-        data["Scenario"][0]["creature"]["damage"] = int(creature.getCreatureDamage)
+        data["Scenario"][0]["creature"]["damage"] = int(self.creature.getCreatureDamage)
 
         with open(jsonPath, "w") as data_file:
             data_file.write(json.dumps(data, indent=4,
