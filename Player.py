@@ -3,19 +3,24 @@
   "Trend Dungeon
 """
 
+jsonPath = "./json/player.json"
+
 import json
 
 class Player:
-    level = 0
-    health = 0
-    experiencePoints = 0
-    damage = 0
+    self.level = 0
+    self.health = 0
+    self.experiencePoints = 0
+    self.damage = 0
 
     def __init__(self):
         self.loadPlayer()
 
+    """
+      "Loads save data from json file.
+    """
     def loadPlayer(self):
-        with open("./json/player.json", "r") as data_file:
+        with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
 
         level = data["Player"][0]["level"]
@@ -29,9 +34,11 @@ class Player:
 
         damage = data["Player"][0]["damage"]
         self.damage = int(damage)
-    
+    """
+      "Writes player data to json file.
+    """
     def savePlayer(self):
-        with open("./json/player.json", "r") as data_file:
+        with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
 
         tmp = data["Player"][0]["level"]
@@ -46,7 +53,7 @@ class Player:
         tmp = data["Player"][0]["damage"]
         data["Player"][0]["damage"]
 
-        with open("./json/player.json", "w") as data_file:
+        with open(jsonPath, "w") as data_file:
             data_file.write(json.dumps(data, indent=4, 
                             separators=(', ', ': ')))
 
