@@ -28,7 +28,7 @@ class Environment:
         self.scenario.setInitial(generalText)
         self.scenario.setFlavorText(flavorText)
         self.scenario.setOptionOne(option1)
-        slef.scenario.setOptionTwo(option2)
+        self.scenario.setOptionTwo(option2)
         self.scenario.setOptionThree(option3)
         self.scenario.setFinishedOne(finished1)
         self.scenario.setFinishedTwo(finished2)
