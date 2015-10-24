@@ -1,15 +1,17 @@
 import tweepy
 import Passwords as passwords
-import Player
-import Environment
-import Scenario
+from Player import Player
+from Environment import Environment
+from Scenario import Scenario
 import Items
 import json
 import time
+import random
 
 
 sleepTime = 2
 savedPlayerJSON = './json/player.json'
+savedScenJSON = './json/scenario.json'
 
 """
 API initialization for the bot
@@ -56,19 +58,20 @@ def getReplies(lastID):
 """
 
 class Driver:
-    p          #the player
-    trend      #the Trending topic
-    scen       #the scenerio to do next
+    p = None         #the player
+    trend = ""     #the Trending topic
+    scen = None     #the scenerio to do next
     """
     Constructor
     """
     def __init__(self):
-        self.p = Player.loadPlayer(savedPlayerJSON)
-        if p.isDead():
-            p = Player("./json/newPlayerTemplate")
-        self.trend = self.getTrend()
+        self.p = Player(savedPlayerJSON)
+        if self.p.isDead():
+            self.p = Player("./json/newPlayerTemplate")
+        self.trend = getTrend()
+        #print self.trend
         self.scen = Scenario()
-        self.scen.loadFromFile()
+        self.scen.loadFromFile(savedScenJSON)
         if self.scen.finished or self.scen.initial == None:
             followUpTweet(self,getReplies(p.lastID))
             item = scen.getItem()
@@ -87,22 +90,11 @@ class Driver:
         player.savePlayer()
 
     """
-    Method to get the random trend to use on this run
-    """
-    def getTrend():
-        str = input("Trend?")
-        return str
-        trendsJSON = api.trends_place(1)
-        trends = trendsJSON[0]
-        x = random.randint(0,9)
-        return trends['trends'][x]['name']
-
-    """
     Method to post the Announce Tweet using API
     """
     def announceTweet(self):
         msg = "The trend for this encounter is {}! Prepare for adventure!"
-        msg.format(self.trend)
+        msg = msg.format(self.trend)
         print msg #api.update_status(status = msg)
         time.sleep(sleepTime)
 
@@ -110,7 +102,7 @@ class Driver:
     Method to post the Scenario Tweet using API
     """
     def scenarioTweet(self):
-        msg = scen.getInitial()
+        msg = self.scen.getInitial()
         print msg #api.update_status(status = msg)
         time.sleep(sleepTime)
 
@@ -119,9 +111,9 @@ class Driver:
     """
     def statusTweet(self):
         msg = "You have {0.currentHealth} Health, {0.experiencePoints} XP, and are level {0.level}."
-        if p.item != None:
+        if self.p.item != None:
             msg+=" You currently have the {0.item} Item."
-        msg.format(self.p)
+        msg = msg.format(self.p)
         print msg #api.update_status(status = msg)
         time.sleep(sleepTime)
 
@@ -129,12 +121,16 @@ class Driver:
     Method to post the Option Tweet using API
     """
     def optionsTweet(self):
-        msg = "{0.encounterText} Follow and reply with #1 to {0.option1}, #2 to {0.option2}"
-        if scen.option3 != None:
+        msg = "{0.encounterText} Follow and reply with #1 to {0.option1}"
+        if self.scen.option2 != None:
+            msg+=", #2 to {0.option2}"
+        else:
+            msg+="!"
+        if self.scen.option3 != None:
             msg+=" , or #3 to {0.option3}!"
         else:
             msg+= "!"
-        msg.format(scen)
+        msg = msg.format(self.scen)
         print msg #api.update_status(status = msg)
         self.scen.finished = True
         time.sleep(sleepTime)
@@ -145,6 +141,18 @@ class Driver:
         print msg #api.update_status(status = msg)
         time.sleep(sleepTime)
 
+"""
+Method to get the random trend to use on this run
+"""
+def getTrend():
+    trendsJSON = api.trends_place(23424977)
+    trends = trendsJSON[0]
+    x = random.randint(0,9)
+    trend = trends['trends'][x]['name'].encode('utf-8','ignore')
+    print trend
+    return trend
+
+
 def main():
     driver = Driver()
     driver.announceTweet()
@@ -153,3 +161,5 @@ def main():
     driver.p.lastID = driver.optionsTweet().id
     driver.p.savePlayer()
     driver.scen.saveToFile()
+
+main()
