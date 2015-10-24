@@ -8,13 +8,13 @@ import json
 jsonPath = "./json/scenario.json"
 
 class Scenario:
-    self.initial = ""
-    self.option1 = ""
-    self.option2 = ""
-    self.option3 = ""
-    self.finished1 = ""
-    self.finished2 = ""
-    self.finished = False
+    initial = ""
+    option1 = ""
+    option2 = ""
+    option3 = ""
+    finished1 = ""
+    finished2 = ""
+    finished = False
 
     def __init__(self):
         self.loadFromFile(jsonPath)
@@ -72,5 +72,41 @@ class Scenario:
         with open(jsonPath, "w") as data_file:
             data_file.write(json.dumps(data, indent=4,
                             separators=(', ', ': ')))
+    
+    def setInitial(self, newInitial):
+        self.initial = newInitial        
+
+    def getInitial(self):
+        return self.initial
+
+    def setOptionOne(self, newOption):
+        self.option1 = newOption
+
+    def setOptionTwo(self, newOption):
+        self.option2 = newOption
+
+    def setOptionThree(self, newOption):
+        self.option3 = newOption
 
     def getOption(self, optionNumber):
+        if optionNumber == 1:
+            return self.option1
+        elif optionNumber == 2:
+            return self.option2
+        else:
+            return self.option3
+
+    def setFinishedOne(self, newFinished):
+        self.finished1 = newFinished
+
+    def setFinishedTwo(self, newFinished):
+        self.finished2 = newFinished
+
+    def getFinished(self, finishedNumber):
+        if finishedNumber == 1:
+            return self.finished1
+        else:
+            return self.finished2
+
+    def isFinished(self):
+        return self.finished

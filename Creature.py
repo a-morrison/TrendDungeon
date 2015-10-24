@@ -6,7 +6,9 @@ import random
 "Trend Dungeon
 """
 
-creatures = ['Dragon','Bear','Wraith','Golem','Skeleton','Werewolf','Ghoul','Undead','Slime']
+lowtier = ['Rat','Slime','Goblin','Undead','Bat']
+midtier = ['Skeleton','Werewolf','Ghoul','Spider','Orc']
+hightier = ['Dragon','Wraith','Golem','Shade','Warlock']
 
 class Creature:
     self.monster
@@ -14,6 +16,12 @@ class Creature:
     self.hp
     
 def __init___(self):
-        self.monster = random.choice(creatures)
-        self.attack = random.random(1,3)+Player.getLevel()
-        self.hp = random.random(3,6)+Player.getLevel()
+    if Player.getLevel() <= 5:
+        self.monster = random.choice(lowtier)
+    elif Player.getLevel() <=10:
+        self.monster = random.choice(midtier)
+    else:
+        self.monster = random.choice(hightier)
+        
+    self.attack = random.random(1,3)+Player.getLevel()
+    self.hp = random.random(3,6)+Player.getLevel()
