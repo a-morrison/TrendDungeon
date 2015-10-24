@@ -8,7 +8,7 @@ import random
 
 lowtier = ['Slime','Bear','Undead','Bat']
 midtier = ['Skeleton','Werewolf','Ghoul']
-toptier = ['Dragon','Wraith','Golem']
+hightier = ['Dragon','Wraith','Golem']
 class Creature:
     self.monster
     self.attack
@@ -20,7 +20,7 @@ def __init___(self):
     elif Player.getLevel() <=10:
         self.monster = random.choice(midtier)
     else:
-        self.monster = random.choice(toptier)
+        self.monster = random.choice(hightier)
         
     self.attack = random.random(1,3)+Player.getLevel()
     self.hp = random.random(3,6)+Player.getLevel()
