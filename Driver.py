@@ -2,6 +2,7 @@ import tweepy
 import Passwords as passwords
 import Player
 import Enviroment
+import Scenario
 import json
 
 
@@ -15,7 +16,7 @@ auth.set_access_token(passwords.access_token, passwords.access_token_secret)
 api = tweepy.API(auth)
 
 
-def getOptions():
+def getReplies():
     countOne = 0;
     countTwo = 0;
     countThree = 0;
@@ -60,7 +61,7 @@ class Driver:
         self.trend = self.getTrend()
         self.scen = Enviroment.loadScenario()
         if self.scen.finished:
-            followUpTweet(self,getOption())
+            followUpTweet(self,getReplies())
             self.scen = Enviroment.generateScenerio(self.trend)
             Enviroment.saveScenario(scen)
 
@@ -92,7 +93,9 @@ class Driver:
     Method to post the Status Tweet using API
     """
     def statusTweet(self):
-        msg = "You have {0.health} Health, {0.experiencePoints} XP, and are level {0.level}. You currently have the {0.item} Item."
+        msg = "You have {0.health} Health, {0.experiencePoints} XP, and are level {0.level}."
+        if p.item != None:
+            msg+=" You currently have the {0.item} Item."
         msg.format(self.p)
         api.update_status(status = msg)
 
@@ -100,7 +103,11 @@ class Driver:
     Method to post the Option Tweet using API
     """
     def optionsTweet(self):
-        msg = "Follow and reply with #1 to {0.option1} or #2 to {0.option2}!"
+        msg = "Follow and reply with #1 to {0.option1}, #2 to {0.option2}"
+        if scen.option3 != None:
+            msg+=" , or #3 to {0.option3}!"
+        else:
+            msg+= "!"
         msg.format(scen)
         api.update_status(status = msg)
 
