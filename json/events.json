@@ -5,7 +5,8 @@
             "flavorText": [
                 "Cold, alone, and without a weapon, you hear the sound of monsters behind you. You need to move fast. How do you proceed?",
                 "There is a loud crash. A large Golem has destroyed the nearby village and will be coming your way soon. How do you proceed?",
-                "You are in a dark forest with no recollection of how you got there. The laugh of a witch resonates. How do you proceed?"
+                "You are in a dark forest with no recollection of how you got there. The laugh of a witch resonates. How do you proceed?",
+		"Night draws closer. You hear the screeching of ghouls from the forest behind you. How do you proceed?"
             ]
         },
     "Witch Hut":
@@ -13,7 +14,8 @@
             "generalText": "You arrived at the Witch {}'s Hut.",
             "flavorText": [
                 "You lie low so you are not to be seen or else fight. You hear a strange monster behind you.",
-                "The hut creaks in the howling wind. You feel uneasy to move any closer."
+                "The hut creaks in the howling wind. You feel uneasy to move any closer.",
+		"Witches are not known to be friendly. You should leave but you see an object near the hut."
             ]
         },
     "Cave":
@@ -21,7 +23,8 @@
             "generalText": "You arrived at the Cave of {}.",
             "flavorText": [
                 "The walls of the cave echo with your footsteps and you hear the babble of a stream deep inside.",
-                "Your hair blows in the gusts from inside the cave. As you approach you hear the growl of a beast."
+                "Your hair blows in the gusts from inside the cave. As you approach you hear the growl of a beast.",
+		"There is a smell from the inside, like death. Your instinct tell you to leave."
                 ]
         },
     "Crypt": {
