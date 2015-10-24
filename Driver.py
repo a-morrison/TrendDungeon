@@ -4,6 +4,7 @@ import Player
 import Enviroment
 import json
 
+
 """
 API initialization for the bot
 """
@@ -13,6 +14,27 @@ auth.set_access_token(passwords.access_token, passwords.access_token_secret)
 
 api = tweepy.API(auth)
 
+countOne = 0;
+countTwo = 0;
+countThree = 0;
+
+
+
+def getOptions():
+    for user in tweepy.Cursor(api.followers()).items():
+        for tweet in tweepy.Cursor(api.user_timeline(user), count = 20):
+            if tweet.text.find('#1')>=0:
+                countOne+=1
+                break
+            elif tweet.text.find('#2')>=0:
+                countTwo+=1
+                break
+            elif tweet.text.find('#3')>=0:
+                countThree+=1
+                break
+        break
+
+    return max(countOne,countTwo,countThree)
 
 
 """
@@ -24,14 +46,19 @@ class Driver:
     self.p          #the player
     self.trend      #the Trending topic
     self.scen       #the scenerio to do next
-
     """
     Constructor
     """
     def __init__(self):
         self.p = Player.loadPlayer()
+        if p.isDead:
+            p = Player("./json/newPlayerTemplate")
         self.trend = self.getTrend()
-        self.scen = Enviroment.scenerio(self.trend)
+        self.scen = Enviroment.loadScenario()
+        if self.scen.finished:
+            followUpTweet(self,getOption())
+            self.scen = Enviroment.scenerio(self.trend)
+            Enviroment.write(scen)
 
     """
     Method to get the random trend to use on this run
@@ -54,7 +81,8 @@ class Driver:
     Method to post the Scenario Tweet using API
     """
     def scenarioTweet(self):
-        api.update_status(status = scen)
+        msg = scen.initial
+        api.update_status(status = msg)
 
     """
     Method to post the Status Tweet using API
@@ -68,3 +96,18 @@ class Driver:
     Method to post the Option Tweet using API
     """
     def optionsTweet(self):
+        msg = "Follow and reply with #1 to {0.option1} or #2 to {0.option2}!"
+        msg.format(scen)
+        api.update_status(status = msg)
+
+    def followUpTweet(self, option):
+        msg = "{}"
+        msg.format(scen.getOption(option))
+        api.update_status(status = msg)
+
+def main():
+    driver = Driver()
+    driver.announceTweet()
+    driver.scenarioTweet()
+    driver.statusTweet()
+    driver.optionsTweet()
