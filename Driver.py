@@ -7,6 +7,8 @@ import Items
 import json
 import time
 
+
+sleepTime = 2
 savedPlayerJSON = './json/player.json'
 
 """
@@ -23,6 +25,9 @@ def getReplies(lastID):
     countOne = 0
     countTwo = 0
     countThree = 0
+
+    return random.choice([1,2,3])
+
     for user in tweepy.Cursor(api.followers, screen_name = "TrendDungeon").items():
         for tweet in tweepy.Cursor(api.user_timeline, screen_name= user.screen_name, count = 20, since_id=lastID).items():
             print tweet.text
@@ -96,16 +101,16 @@ class Driver:
     def announceTweet(self):
         msg = "The trend for this encounter is {}! Prepare for adventure!"
         msg.format(self.trend)
-        api.update_status(status = msg)
-        time.sleep(60)
+        print msg #api.update_status(status = msg)
+        time.sleep(sleepTime)
 
     """
     Method to post the Scenario Tweet using API
     """
     def scenarioTweet(self):
         msg = scen.getInitial()
-        api.update_status(status = msg)
-        time.sleep(60)
+        print msg #api.update_status(status = msg)
+        time.sleep(sleepTime)
 
     """
     Method to post the Status Tweet using API
@@ -115,8 +120,8 @@ class Driver:
         if p.item != None:
             msg+=" You currently have the {0.item} Item."
         msg.format(self.p)
-        api.update_status(status = msg)
-        time.sleep(60)
+        print msg #api.update_status(status = msg)
+        time.sleep(sleepTime)
 
     """
     Method to post the Option Tweet using API
@@ -128,15 +133,15 @@ class Driver:
         else:
             msg+= "!"
         msg.format(scen)
-        api.update_status(status = msg)
+        print msg #api.update_status(status = msg)
         self.scen.finished = True
-        time.sleep(60)
+        time.sleep(sleepTime)
 
     def followUpTweet(self, option):
         msg = "{}"
         msg.format(scen.getFinish(option))
-        api.update_status(status = msg)
-        time.sleep(60)
+        print msg #api.update_status(status = msg)
+        time.sleep(sleepTime)
 
 def main():
     driver = Driver()
