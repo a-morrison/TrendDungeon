@@ -22,7 +22,7 @@ class Environment:
     finished2 = []
     finished3 = []
     currentScenario = None
-    creature = None 
+    creature = None
 
     def __init__(self, player):
         self.player = player
@@ -47,7 +47,7 @@ class Environment:
 
         encounterChance = randint(0,100)
         self.flavorText = self.getFlavorText()
-        
+
         if location == "Shoppe":
             self.shoppeEncouter()
         else:
@@ -57,7 +57,7 @@ class Environment:
                 self.giveItem()
             else:
                 self.startEncounter()
-    
+
     def giveItem(self):
         self.scenario.hasItem = True
         self.finished1[1] = True
@@ -77,7 +77,7 @@ class Environment:
 
     def startEncounter(self):
         self.spawnCreature()
-    
+
     def shoppeEncounter(self):
         self.option1 = "Take Item"
         self.option2 = "Leave"
@@ -88,20 +88,20 @@ class Environment:
 
         self.flavorText = self.flavorText + " " + addedText
         self.finished1 = "You leave the {}.".formate(location)
-        
+
     def getGeneralText(self, trend):
         with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
 
         generalText = data[self.location]["generalText"]
         self.generalText = generalText.format(trend)
-    
+
     def getFlavorText(self):
         with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
 
         length = len(data[self.location]["flavorText"])
-        flavorText = data[self.location]["flavorText"][random.randint(0,length-1)
+        flavorText = data[self.location]["flavorText"][random.randint(0,length-1)]
         return flavorText
 
     def spawCreature(self):
