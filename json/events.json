@@ -36,8 +36,18 @@
 		]
 	}
     ]
-    "Den": [
+    "Swamp": [
         {
-	    "generalText": "You arrived at {}'s den."
+	    "generalText": "You arrived at {}'s Swamp."
+	    "flavorText": [
+	        "You a faint but strong voice, \"This is my swamp\"."
+		"The song of frogs and crickets put you at slight ease."
+		]
+		
+	}
+    ]
+    "Glade": [
+        {
+	    "generalText": "You arrived at {}'s Canyon."
 	    "flavorText": [
 	        "
