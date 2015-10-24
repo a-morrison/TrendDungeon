@@ -75,6 +75,15 @@ class Environment:
         self.spawnCreature()
     
     def shoppeEncounter(self):
+        self.option1 = "Take Item"
+        self.option2 = "Leave"
+        addedText = self.getFlavorText()
+
+        while addedText == self.flavorText:
+            addedText - self.getFlavorText()
+
+        self.flavorText = self.flavorText + " " + addedText
+        self.finished1 = "You leave the {}.".formate(location)
         
     def getGeneralText(self, trend):
         with open(jsonPath, "r") as data_file:
