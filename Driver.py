@@ -5,7 +5,7 @@ import Enviroment
 import Scenario
 import Items
 import json
-
+import time
 
 """
 API initialization for the bot
@@ -18,9 +18,9 @@ api = tweepy.API(auth)
 
 
 def getReplies(lastID):
-    countOne = 0;
-    countTwo = 0;
-    countThree = 0;
+    countOne = 0
+    countTwo = 0
+    countThree = 0
     for user in tweepy.Cursor(api.followers, screen_name = "TrendDungeon").items():
         for tweet in tweepy.Cursor(api.user_timeline, screen_name= user.screen_name, count = 20, since_id=lastID).items():
             print tweet.text
@@ -90,6 +90,7 @@ class Driver:
         msg = "The trend for this encounter is {}! Prepare for adventure!"
         msg.format(self.trend)
         api.update_status(status = msg)
+        time.sleep(60)
 
     """
     Method to post the Scenario Tweet using API
@@ -97,6 +98,7 @@ class Driver:
     def scenarioTweet(self):
         msg = scen.initial
         api.update_status(status = msg)
+        time.sleep(60)
 
     """
     Method to post the Status Tweet using API
@@ -107,6 +109,7 @@ class Driver:
             msg+=" You currently have the {0.item} Item."
         msg.format(self.p)
         api.update_status(status = msg)
+        time.sleep(60)
 
     """
     Method to post the Option Tweet using API
@@ -119,17 +122,19 @@ class Driver:
             msg+= "!"
         msg.format(scen)
         api.update_status(status = msg)
+        time.sleep(60)
 
     def followUpTweet(self, option):
         msg = "{}"
         msg.format(scen.getOption(option))
         api.update_status(status = msg)
+        time.sleep(60)
 
 def main():
     driver = Driver()
     driver.announceTweet()
     driver.scenarioTweet()
     driver.statusTweet()
-    driver.p.lastID = driver.optionsTweet()
+    driver.p.lastID = driver.optionsTweet().id
     driver.p.savePlayer()
     driver.scen.saveToFile()
