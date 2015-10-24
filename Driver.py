@@ -14,15 +14,14 @@ auth.set_access_token(passwords.access_token, passwords.access_token_secret)
 
 api = tweepy.API(auth)
 
-countOne = 0;
-countTwo = 0;
-countThree = 0;
-
-
 
 def getOptions():
-    for user in tweepy.Cursor(api.followers()).items():
-        for tweet in tweepy.Cursor(api.user_timeline(user), count = 20):
+    countOne = 0;
+    countTwo = 0;
+    countThree = 0;
+    for user in tweepy.Cursor(api.followers, screen_name = "TrendDungeon").items():
+        for tweet in tweepy.Cursor(api.user_timeline, screen_name= user.screen_name, count = 20).items():
+            print tweet.text
             if tweet.text.find('#1')>=0:
                 countOne+=1
                 break
@@ -34,7 +33,12 @@ def getOptions():
                 break
         break
 
-    return max(countOne,countTwo,countThree)
+    if countOne>countTwo and countOne>countThree:
+        return 1;
+    elif countTwo>countThree:
+        return 2
+    else:
+        return 3
 
 
 """
@@ -57,8 +61,8 @@ class Driver:
         self.scen = Enviroment.loadScenario()
         if self.scen.finished:
             followUpTweet(self,getOption())
-            self.scen = Enviroment.scenerio(self.trend)
-            Enviroment.write(scen)
+            self.scen = Enviroment.generateScenerio(self.trend)
+            Enviroment.saveScenario(scen)
 
     """
     Method to get the random trend to use on this run
