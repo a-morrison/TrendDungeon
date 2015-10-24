@@ -1,12 +1,12 @@
-import nltk
-
 """
     "This class represents the environment for the game
     "Trend Dungeon
 """
 import random
+import json
 from Scenario import Scenario
 from Creature import Creature
+from Items import Items
 
 locations = ['Witch Hut', 'Cave', 'Crypt', 'Dark Forest', 'Swamp', 'Canyon', 'Cliff', 'Shoppe']
 jsonPath = './json/events.json'
@@ -14,26 +14,68 @@ jsonPath = './json/events.json'
 class Environment:
     location = ''
     generalText = ""
-    newScenario = None
+    flavorText = ""
+    currentScenario = None
     creature = None 
 
-    def __init__(self):
-        newScenario = ""
+    def __init__(self, player):
+        self.player = player
 
     def loadScenario(self, scenario):
+        self.currentScenario = scenario
 
-    def saveScenario(self, scenario):
+    def saveScenario(self):
+        self.scenario.setInitial(generalText)
+        self.scenario.setFlavorText(flavorText)
+        self.scenario.setOptionOne(option1)
+        slef.scenario.setOptionTwo(option2)
+        self.scenario.setOptionThree(option3)
+        self.scenario.setFinishedOne(finished1)
+        self.scenario.setFinishedTwo(finished2)
+        self.scenario.setFinishedThree(finished3)
+        self.scenario.saveToFile()
 
     def generateScenario(self, trend):
         self.location = random.choice(locations)
         self.getGeneralText(trend)
 
+        encounterChance = randint(0,100)
+        self.getFlavorText()
+        
+        if location == "Shoppe":
+            self.shoppeEncouter()
+        else:
+            if encounterChance <= 20:
+                self.exploreRoom()
+            elif encounterChance <= 50:
+                self.giveItem()
+            else:
+                self.startEncounter()
+    
+    def giveItem(self):
+        self.scenario.hasItem = True
+
+    def exploreRoom(self):
+        
+    def startEncounter(self):
+        self.spawnCreature()
+    
+    def shoppeEncounter(self):
+        
     def getGeneralText(self, trend):
         with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
 
-        generalText = data[self.location][0]["generalText"]
+        generalText = data[self.location]["generalText"]
         self.generalText = generalText.format(trend)
+    
+    def getFlavorText(self):
+        with open(jsonPath, "r") as data_file:
+            data = json.load(data_file)
+
+        length = len(data[self.location]["flavorText"])
+        flavorText = data[self.location]["flavorText"][random.randint(0,length-1)
+        self.flavorText = flavorText
 
     def spawCreature(self):
         self.creature = Creature()
