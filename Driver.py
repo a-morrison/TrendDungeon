@@ -62,7 +62,8 @@ class Driver:
         if p.isDead():
             p = Player("./json/newPlayerTemplate")
         self.trend = self.getTrend()
-        self.scen = Enviroment.loadScenario()
+        self.scen = Scenario()
+        self.scen.loadFromFile()
         if self.scen.finished or self.scen.initial == None:
             followUpTweet(self,getReplies(p.lastID))
             item = scen.getItem()
@@ -102,7 +103,7 @@ class Driver:
     Method to post the Scenario Tweet using API
     """
     def scenarioTweet(self):
-        msg = scen.initial
+        msg = scen.getInitial()
         api.update_status(status = msg)
         time.sleep(60)
 
