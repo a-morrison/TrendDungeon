@@ -30,7 +30,7 @@ class Scenario:
 
         initial = data["Scenario"][0]["initial"]
         self.initial = str(initial)
-        
+
         flavor = data["Scenario"][0]["flavorText"]
         self.flavorText = str(flavor)
 
@@ -48,22 +48,22 @@ class Scenario:
 
         finish2 = data["Scenario"][0]["finish2"]
         self.finish2 = str(finish2)
-        
+
         finish3 = data["Scenario"][0]["finish3"]
         self.finish3 = str(finish3)
 
         finished = data["Scenario"][0]["finished"]
         self.finished = bool(finished)
-        
+
         self.loadCreature()
 
-    def saveToFile(self): 
+    def saveToFile(self):
         with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
 
         tmp = data["Scenario"][0]["initial"]
         data["Scenario"][0]["initial"] = str(self.initial)
-        
+
         tmp = data["Scenario"][0]["flavorText"]
         data["Scenario"][0]["flavorText"] = str(self.flavorText)
 
@@ -81,23 +81,23 @@ class Scenario:
 
         tmp = data["Scenario"][0]["finish2"]
         data["Scenario"][0]["finish2"] = str(self.finish2)
-        
+
         tmp = data["Scenario"][0]["finish3"]
         data["Scenario"][0]["finish3"] = str(self.finish3)
 
         tmp = data["Scenario"][0]["finished"]
         data["Scenario"][0]["finished"] = str(self.finished)
-        
+
         with open(jsonPath, "w") as data_file:
             data_file.write(json.dumps(data, indent=4,
                             separators=(', ', ': ')))
-        
+
         self.saveCreaure()
 
     def loadCreature(self):
         with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
-        
+
         creatureType = data["Scenario"][0]["creature"]["type"]
         creatureHealth = data["Scenario"][0]["creature"]["health"]
         creatureDamage = data["Scenario"][0]["creature"]["damage"]
@@ -110,7 +110,7 @@ class Scenario:
     def saveCreature(self):
         with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
-            
+
         tmp = data["Scenario"][0]["creature"]["type"]
         data["Scenario"][0]["creature"]["type"] = str(creature.getCreatureType)
 
@@ -128,13 +128,13 @@ class Scenario:
         self.creature = creature
 
     def setInitial(self, newInitial):
-        self.initial = newInitial        
+        self.initial = newInitial
 
     def getInitial(self):
         return self.initial
-    
+
     def setFlavorText(self, newText):
-        self.flavorText = newText)
+        self.flavorText = newText
 
     def getFlavorText(self):
         return self.flavorText
@@ -161,7 +161,7 @@ class Scenario:
 
     def setFinishedTwo(self, newFinished):
         self.finish2 = newFinished
-    
+
     def setFinishedThree(self, newFinished):
         self.finish3 = newFinished
 
