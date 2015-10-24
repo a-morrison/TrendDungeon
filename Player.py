@@ -13,7 +13,7 @@ class Player:
     currentHealth = 0
     experiencePoints = 0
     damage = 0
-    item = 0
+    item = None
 
     def __init__(self, jsonPath):
         self.loadPlayer(jsonPath)
