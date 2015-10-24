@@ -85,7 +85,8 @@
 	    "generalText": "You arrived at {}'s Graveyard.",
 	    "flavorText": [
 	        "There is a thick, mysterious fog. Gravestones both new and old litter the area.",
-		"An immediate feeling of sickness overcomes you and you feel like you're being watched."
+		"An immediate feeling of sickness overcomes you and you feel like you're being watched.",
+		"You feel a chill as you enter and would like to leave, but you see a yellow glint nearby."
 		]
 	},
     "Shoppe":
