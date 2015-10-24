@@ -132,8 +132,7 @@ class Scenario:
         self.creature = creature
 
     def getEncounterText(self):
-        x = random.randint(0,len(self.flavorText)-1)
-        encounterText = self.initial + " " + self.flavorText[x]
+        encounterText = self.initial + " " + self.flavorText
         return encounterText
 
     def setInitial(self, newInitial):

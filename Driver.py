@@ -28,7 +28,7 @@ def getReplies(lastID):
     countTwo = 0
     countThree = 0
 
-    return random.choice([1,2,3])
+    return 1
 
     for user in tweepy.Cursor(api.followers, screen_name = "TrendDungeon").items():
         for tweet in tweepy.Cursor(api.user_timeline, screen_name= user.screen_name, count = 20, since_id=lastID).items():
@@ -175,11 +175,11 @@ class Driver:
     def optionsTweet(self):
         temp = self.scen.getEncounterText()
         msg = "{1} Follow and reply with #1 to {0.option1}"
-        if self.scen.option2 != None:
+        if self.scen.option2 != "None":
             msg+=", #2 to {0.option2}"
         else:
             msg+="!"
-        if self.scen.option3 != None:
+        if self.scen.option3 != "None":
             msg+=" , or #3 to {0.option3}!"
         else:
             msg+= "!"
@@ -191,9 +191,8 @@ class Driver:
 
     def followUpTweet(self, option):
         msg = "{}"
-        temp = self.scen.getFinished(option)
-        print temp
-        msg.format(temp[0])
+        temp = self.scen.getFinished(option)[0]
+        msg = msg.format(temp)
         print msg #api.update_status(status = msg)
         time.sleep(sleepTime)
 
@@ -201,6 +200,7 @@ class Driver:
 Method to get the random trend to use on this run
 """
 def getTrend():
+    return 'trend'
     trendsJSON = api.trends_place(23424977)
     trends = trendsJSON[0]
     x = random.randint(0,9)

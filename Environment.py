@@ -108,7 +108,7 @@ class Environment:
         addedText = self.getFlavorText()
 
         while addedText == self.flavorText:
-            addedText - self.getFlavorText()
+            addedText = self.getFlavorText()
 
         self.flavorText = self.flavorText + " " + addedText
         self.finished1 = "You leave the {}.".format(self.location)

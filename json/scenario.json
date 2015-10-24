@@ -8,7 +8,7 @@
                 null
             ], 
             "finied": 0, 
-            "initial": "You arrived at the Castle of #UFCDublin.", 
+            "initial": "You arrived at trend's Canyon.", 
             "finished": true, 
             "creature": {
                 "health": null, 
@@ -16,18 +16,18 @@
                 "damage": null
             }, 
             "finish1": [
-                "You defeat the Skeleton!", 
+                "You defeat the Ghoul!", 
                 true, 
                 20, 
                 10
             ], 
             "finish2": [
-                "You attempt to flee from the Skeleton!", 
+                "You attempt to flee from the Ghoul!", 
                 false, 
                 0, 
                 10
             ], 
-            "flavorText": "Signs of a large battle scar the landscape. At first glance it seems to be empty.", 
+            "flavorText": "You see a fast and wild stream at the bottom along with a goblin encampment. Too dangerous to stay.", 
             "option2": "", 
             "option3": "", 
             "option1": ""
