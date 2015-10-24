@@ -69,7 +69,7 @@ class Player:
         data["Player"][0]["item"] = str(self.item)
 
         with open(jsonPath, "w") as data_file:
-            data_file.write(json.dumps(data, indent=4, 
+            data_file.write(json.dumps(data, indent=4,
                             separators=(', ', ': ')))
 
     """
@@ -77,7 +77,7 @@ class Player:
     """
     def getHealth(self):
         return self.currentHealth
-    
+
     """
       "Removes a supplied number of health
       "points.
@@ -89,7 +89,7 @@ class Player:
         self.currentHealth -= pointsToRemove
         if self.currentHealth <= 0:
             self.currentHealth = 0
-    
+
     """
       "Give a supplied number of health
       "points.
@@ -101,13 +101,16 @@ class Player:
         self.currentHealth += pointsToGive
         if self.currentHealth >= self.totalHealth:
             self.currentHealth = self.totalHealth
-    
+
     """
       "Returns the damage amount of the player.
     """
     def getDamage(self):
-        return self.damage
-    
+        if item = 0:
+            return self.damage
+        else:
+            return item.damage * self.damage
+
     """
       "Gives the player a supplied number of
       "experience points.
@@ -120,7 +123,7 @@ class Player:
 
         if self.experiencePoints % 100 == 0:
             self.levelUp()
-            
+
     """
       "Levels up the player.
     """
@@ -128,13 +131,13 @@ class Player:
         self.level += 1
         self.totalHealth += 1
         self.giveHealth(self.totalHealth)
-    
+
     """
       "Returns the player's level.
     """
     def getLevel(self):
         return self.level
-    
+
     """
       "Returns true if the player is dead.
     """
