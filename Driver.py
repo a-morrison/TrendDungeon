@@ -110,11 +110,21 @@ class Driver:
         self.scen = Scenario()
         self.scen.loadFromFile(savedScenJSON)
         if self.scen.finished:
-            self.followUpTweet(getReplies(self.p.lastID))
-            item = self.scen.getItem()
-            exp = self.scen.amountXP()
-            health = self.scen.amountHealth()
-            updatePlayer(self.p,item,exp,health)
+            option = getReplies(self.p.lastID)
+            self.followUpTweet(option)
+            if option == 1:
+                item = self.scen.finish1[1]
+                exp = self.scen.finish1[2]
+                health = self.scen.finish1[3]
+            elif option ==2:
+                item = self.scen.finish2[1]
+                exp = self.scen.finish2[2]
+                health = self.scen.finish2[3]
+            else:
+                item = self.scen.finish3[1]
+                exp = self.scen.finish3[2]
+                health = self.scen.finish3[3]
+            self.updatePlayer(self.p,item,exp,health)
         tempEnviro = Environment(self.trend)
         tempEnviro.generateScenario(self.trend).saveScenario()
         self.scen = loadScenFromFile(savedScenJSON)
@@ -123,11 +133,11 @@ class Driver:
     def updatePlayer(self,player,item,exp,health):
         if item:
             player.item = Items(None)
-        player.giveExperiencePoints(exp/player.level)
+        player.giveExperiencePoints(int(exp)/int(player.level))
         if health>0:
-            player.giveHealth(health)
+            player.giveHealth(int(health))
         else:
-            player.removeHealth(health)
+            player.removeHealth(int(health))
         player.savePlayer()
 
     """
