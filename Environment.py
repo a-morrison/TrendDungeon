@@ -18,9 +18,9 @@ class Environment:
     option1 = ""
     option2 = ""
     option3 = ""
-    finished1 = ""
-    finished2 = ""
-    finished3 = ""
+    finished1 = []
+    finished2 = []
+    finished3 = []
     currentScenario = None
     creature = None 
 
@@ -60,6 +60,7 @@ class Environment:
     
     def giveItem(self):
         self.scenario.hasItem = True
+        self.finished1[1] = True
 
     def exploreRoom(self):
         self.option1 = "Leave"
@@ -69,7 +70,10 @@ class Environment:
             addedText = self.getFlavorText()
 
         self.flavorText = self.flavorText + " " + addedText
-        self.finished1 = "You leave the {}.".format(location)
+        self.finished1[0] = "You leave the {}.".format(location)
+        self.finished1[1] = True
+        self.finished1[2] = 0
+        self.finished1[3] = 0
 
     def startEncounter(self):
         self.spawnCreature()
