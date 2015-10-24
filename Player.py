@@ -3,37 +3,42 @@
   "Trend Dungeon
 """
 
-jsonPath = "./json/player.json"
-
 import json
 
-class Player:
-    self.level = 0
-    self.health = 0
-    self.experiencePoints = 0
-    self.damage = 0
+jsonPath = "./json/player.json"
 
-    def __init__(self):
-        self.loadPlayer()
+class Player:
+    level = 0
+    totalHealth = 0
+    currentHealth = 0
+    experiencePoints = 0
+    damage = 0
+
+    def __init__(self, jsonPath):
+        self.loadPlayer(jsonPath)
 
     """
       "Loads save data from json file.
     """
-    def loadPlayer(self):
+    def loadPlayer(self, jsonPath):
         with open(jsonPath, "r") as data_file:
             data = json.load(data_file)
 
         level = data["Player"][0]["level"]
         self.level = int(level)
 
-        health = data["Player"][0]["health"]
-        self.health = int(health)
+        health = data["Player"][0]["totalHealth"]
+        self.totalHealth = int(health)
+
+        health = data["Player"][0]["currentHealth"]
+        self.currentHealth = int(health)
 
         experiencePoints = data["Player"][0]["experiencePoints"]
         self.experiencePoints = int(experiencePoints)
 
         damage = data["Player"][0]["damage"]
         self.damage = int(damage)
+
     """
       "Writes player data to json file.
     """
@@ -44,8 +49,11 @@ class Player:
         tmp = data["Player"][0]["level"]
         data["Player"][0]["level"] = str(self.level)
 
-        tmp = data["Player"][0]["health"]
-        data["Player"][0]["health"] = str(self.health)
+        tmp = data["Player"][0]["totalHealth"]
+        data["Player"][0]["totalHealth"] = str(self.totalHealth)
+
+        tmp = data["Player"][0]["currentHealth"]
+        data["Player"][0]["currentHealth"] = str(self.currentHealth)
 
         tmp = data["Player"][0]["experiencePoints"]
         data["Player"][0]["experiencePoints"] = str(self.experiencePoints)
@@ -61,7 +69,7 @@ class Player:
       "Returns the health of the player.
     """
     def getHealth(self):
-        return self.health
+        return self.currentHealth
     
     """
       "Removes a supplied number of health
@@ -71,7 +79,9 @@ class Player:
       "removed.
     """
     def removeHealth(self, pointsToRemove):
-        self.health -= pointsToRemove
+        self.currentHealth -= pointsToRemove
+        if self.currentHealth <= 0:
+            self.currentHealth = 0
     
     """
       "Give a supplied number of health
@@ -81,7 +91,9 @@ class Player:
       "given.
     """
     def giveHealth(self, pointsToGive):
-        self.health += pointsToGive
+        self.currentHealth += pointsToGive
+        if self.currentHealth >= self.totalHealth:
+            self.currentHealth = self.totalHealth
     
     """
       "Returns the damage amount of the player.
@@ -107,9 +119,20 @@ class Player:
     """
     def levelUp(self):
         self.level += 1
-
+        self.totalHealth += 1
+        self.giveHealth(self.totalHealth)
+    
+    """
+      "Returns the player's level.
+    """
+    def getLevel(self):
+        return self.level
+    
+    """
+      "Returns true if the player is dead.
+    """
     def isDead(self):
-        if health <= 0:
+        if self.currentHealth <= 0:
             return true
         else:
             return false
