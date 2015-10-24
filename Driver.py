@@ -202,6 +202,7 @@ def getTrend():
     trends = trendsJSON[0]
     x = random.randint(0,9)
     trend = trends['trends'][x]['name'].encode('utf-8','ignore')
+    trend = Environment.getNoun(trend)
     print trend
     return trend
 
