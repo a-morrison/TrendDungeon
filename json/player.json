@@ -6,8 +6,12 @@
             "currentHealth":"10",
             "damage": "1",
             "level": "1",
-            "item":null,
-            "lastID":0
+            "lastID":0,
+            "item":
+             {
+                "name":None,
+                "damage":None
+             }
         }
     ]
 }
