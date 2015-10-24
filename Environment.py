@@ -79,6 +79,27 @@ class Environment:
     def startEncounter(self):
         self.spawnCreature()
 
+        option1 = "Fight"
+        option2 = "Flee"
+        
+        self.setEncounterOptionOne()
+        self.setEncounterOptionTwo()
+
+    def getCurrentCreatureHealth(self):
+        return self.creatrue.getCreatureHealth()
+
+    def setEncounterOptionOne(self):
+        self.finished1[0] = "You defeat the {}!".format(self.creature.getCreatureType())
+        self.finished1[1] = True
+        self.finished1[2] = 20
+        self.finished1[3] = self.creature.getCreatureDamage()
+
+    def setEncounterOptionTwo(self):
+        self.finished2[0] = "You attempt to flee from the {}!".formate(self.creature.getCreatureType())
+        self.finished2[1] = False
+        self.finished2[2] = 0
+        self.finished2[3] = self.creature.getCreatureDamage()
+
     def shoppeEncounter(self):
         self.option1 = "Take Item"
         self.option2 = "Leave"
