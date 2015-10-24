@@ -137,7 +137,7 @@ class Driver:
         msg = msg.format(self.scen,temp)
         self.scen.finished = True
         print msg
-        return api.update_status(status = msg)
+        #return api.update_status(status = msg)
         time.sleep(sleepTime)
 
     def followUpTweet(self, option):
@@ -163,7 +163,7 @@ def main():
     driver.announceTweet()
     driver.scenarioTweet()
     driver.statusTweet()
-    driver.p.lastID = driver.optionsTweet().id
+    driver.p.lastID = 1 #driver.optionsTweet().id
     driver.p.savePlayer()
     driver.scen.saveToFile()
 
