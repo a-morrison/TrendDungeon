@@ -1,76 +1,72 @@
 {
-    "Witch Hut": [
+    "Witch Hut":
         {
-	    "generalText": "You arrived at the Witch {}'s Hut."
+	    "generalText": "You arrived at the Witch {}'s Hut.",
 	    "flavorText": [
 	        "You feel a chill",
 		"You hear the cry of a strange monster in the distance",
 		"The wind howls and the hut sounds a loud creak."
 		]
-	}
-    ]
-    "Cave": [
+	},
+    "Cave":
         {
-	    "generalText": "You arrived at the cave of {}."
+	    "generalText": "You arrived at the cave of {}.",
 	    "flavorText": [
 	        "The walls of the cave echo with your footsteps.",
 		"Your hair blows in the gusts deep inside."
 		]
-	}
-    ]
-    "Crypt": [
-	{
-	    "generalText": "You arrived at the Crypt of {}."
+	},
+    "Crypt": {
+	    "generalText": "You arrived at the Crypt of {}.",
 	    "flavorText": [
 	        "The whispers of the past tickle your ear.",
 		"You feel uneasy. Like someone is watching you."
 	    	]
-	}
-    ]
-    "Dark Forest": [
+	},
+    "Dark Forest":
         {
-	    "generalText": "You arrived at the Dark Forest of {}."
+	    "generalText": "You arrived at the Dark Forest of {}.",
 	    "flavorText": [
 	        "You see pairs of eyes in the distant dark.",
 		"The trees thrash in the howling wind around you."
 		]
-	}
-    ]
-    "Swamp": [
+	},
+    "Swamp":
         {
-	    "generalText": "You arrived at {}'s Swamp."
+	    "generalText": "You arrived at {}'s Swamp.",
 	    "flavorText": [
 	        "You hear a faint but strong voice, \"This is my swamp\".",
 		"The song of frogs and crickets put you at slight ease."
 		]
-		
-	}
-    ]
-    "Canyon": [
+
+	},
+    "Canyon":
         {
-	    "generalText": "You arrived at {}'s Canyon."
+	    "generalText": "You arrived at {}'s Canyon.",
 	    "flavorText": [
 	        "There is a dense fog at the bottom of the canyon.",
 		"You here the howl of a coyote that echos across the canyon."
 		]
-	}
-    ]
-    "Cliff": [
+	},
+    "Cliff":
         {
-	    "generalText": "You arrived at {}'s Cliff."
+	    "generalText": "You arrived at {}'s Cliff.",
 	    "flavorText": [
 	        "The rocky cliff face makes you very nervous to go near.",
 		"You look over the edge to the dark forest below."
 		]
-	}
-    ]
-    "Shoppe": [
+	},
+    "Shoppe":
         {
 	    "generalText": "You arrived at {}'s Shoppe.",
 	    "flavorText": [
-	        "You take in ease in the fact you can now rest."
+	        "You take in ease in the fact you can now rest.",
 		"The shopkeep gives you an uneasy look."
 		]
 	}
+<<<<<<< HEAD
     ]
+=======
+
+>>>>>>> 32f6bd6283120434f1002ec56fa6feaf847d6b58
 }

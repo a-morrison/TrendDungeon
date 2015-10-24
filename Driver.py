@@ -5,7 +5,9 @@ import Enviroment
 import Scenario
 import Items
 import json
+import time
 
+savedPlayerJSON = './json/player.json'
 
 """
 API initialization for the bot
@@ -18,9 +20,9 @@ api = tweepy.API(auth)
 
 
 def getReplies(lastID):
-    countOne = 0;
-    countTwo = 0;
-    countThree = 0;
+    countOne = 0
+    countTwo = 0
+    countThree = 0
     for user in tweepy.Cursor(api.followers, screen_name = "TrendDungeon").items():
         for tweet in tweepy.Cursor(api.user_timeline, screen_name= user.screen_name, count = 20, since_id=lastID).items():
             print tweet.text
@@ -56,16 +58,20 @@ class Driver:
     Constructor
     """
     def __init__(self):
-        self.p = Player.loadPlayer()
-        if p.isDead:
+        self.p = Player.loadPlayer(savedPlayerJSON)
+        if p.isDead():
             p = Player("./json/newPlayerTemplate")
         self.trend = self.getTrend()
-        self.scen = Enviroment.loadScenario()
+        self.scen = Scenario()
+        self.scen.loadFromFile()
         if self.scen.finished or self.scen.initial == None:
             followUpTweet(self,getReplies(p.lastID))
-            updatePlayer(player,item,exp,health)
+            item = scen.getItem()
+            exp = scen.amountXP()
+            health = scen.amountHealth()
+            updatePlayer(p,item,exp,health)
             self.scen = Enviroment.generateScenerio(self.trend)
-            Enviroment.saveScenario(scen)
+            scen.saveToFile()
 
 
     def updatePlayer(player,item,exp,health):
@@ -73,6 +79,7 @@ class Driver:
             player.item = Item()
         player.experiencePoints+=exp
         player.health+=health
+        player.savePlayer()
 
     """
     Method to get the random trend to use on this run
@@ -81,8 +88,6 @@ class Driver:
         trendsJSON = api.trends_place(1)
         trends = trendsJSON[0]
         x = random.randint(0,9)
-        while (len(trends['trends'][x]['name']) <= 15):
-           x = random.randint(0,9)
         return trends['trends'][x]['name']
 
     """
@@ -92,23 +97,26 @@ class Driver:
         msg = "The trend for this encounter is {}! Prepare for adventure!"
         msg.format(self.trend)
         api.update_status(status = msg)
+        time.sleep(60)
 
     """
     Method to post the Scenario Tweet using API
     """
     def scenarioTweet(self):
-        msg = scen.initial
+        msg = scen.getInitial()
         api.update_status(status = msg)
+        time.sleep(60)
 
     """
     Method to post the Status Tweet using API
     """
     def statusTweet(self):
-        msg = "You have {0.health} Health, {0.experiencePoints} XP, and are level {0.level}."
+        msg = "You have {0.currentHealth} Health, {0.experiencePoints} XP, and are level {0.level}."
         if p.item != None:
             msg+=" You currently have the {0.item} Item."
         msg.format(self.p)
         api.update_status(status = msg)
+        time.sleep(60)
 
     """
     Method to post the Option Tweet using API
@@ -121,17 +129,20 @@ class Driver:
             msg+= "!"
         msg.format(scen)
         api.update_status(status = msg)
+        self.scen.finished = True
+        time.sleep(60)
 
     def followUpTweet(self, option):
         msg = "{}"
-        msg.format(scen.getOption(option))
+        msg.format(scen.getFinish(option))
         api.update_status(status = msg)
+        time.sleep(60)
 
 def main():
     driver = Driver()
     driver.announceTweet()
     driver.scenarioTweet()
     driver.statusTweet()
-    driver.p.lastID = driver.optionsTweet()
+    driver.p.lastID = driver.optionsTweet().id
     driver.p.savePlayer()
     driver.scen.saveToFile()

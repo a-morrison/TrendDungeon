@@ -2,18 +2,25 @@
     "Scenario": [
         {
             "initial":null,
+<<<<<<< HEAD
             "creature":
                 {
                     "type":null,
                     "health":null,
                     "damage":null
                 }
+=======
+>>>>>>> 32f6bd6283120434f1002ec56fa6feaf847d6b58
             "option1":null,
             "option2":null,
             "option3":null,
             "finish1":null,
             "finish2":null,
+<<<<<<< HEAD
             "finied":0
+=======
+            "finished":false
+>>>>>>> 32f6bd6283120434f1002ec56fa6feaf847d6b58
         }
     ]
 }

@@ -1,12 +1,12 @@
 {
     "Player": [
         {
-            "experiencePoints": "0", 
+            "experiencePoints": "0",
             "totalHealth": "10",
             "currentHealth":"10",
-            "damage": "1", 
+            "damage": "1",
             "level": "1",
-            "item":None
+            "item":null
         }
     ]
 }

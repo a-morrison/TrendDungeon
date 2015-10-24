@@ -1,3 +1,5 @@
+import nltk
+
 """
     "This class represents the environment for the game
     "Trend Dungeon
@@ -37,13 +39,18 @@ class Environment:
         self.creature = Creature()
 
     def getNoun(self, trend):
+        trend = trend.replace(" ","")
         trendList = list(trend)
-        for x in trendList:
-            if x.isupper():
-                for y in trendList:
-                    if y.isupper() and y != x:
-                        trendList[x:y-1]
-        if trendList[0] != '#':
-            trendList[0] = '#'
+        nums = ['1','2','3','4','5','6','7','8','9','0']
+
+        if len(trendList) >= 15:
+            temp = list()
+            for x in trendList:
+                if x.isupper() or x in nums:
+                    temp.append(x)
+                    trendList = temp;
+        if trendList[0] != "#":
+            trendList.insert(0,"#")
+
         trendStr = ''.join(trendList)
         return trendStr
