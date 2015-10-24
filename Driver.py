@@ -63,9 +63,12 @@ class Driver:
         self.scen = Enviroment.loadScenario()
         if self.scen.finished or self.scen.initial == None:
             followUpTweet(self,getReplies(p.lastID))
-            updatePlayer(player,item,exp,health)
+            item = scen.getItem()
+            exp = scen.amountXP()
+            health = scen.amountHealth()
+            updatePlayer(p,item,exp,health)
             self.scen = Enviroment.generateScenerio(self.trend)
-            Enviroment.saveScenario(scen)
+            scen.saveToFile()
 
 
     def updatePlayer(player,item,exp,health):
@@ -73,6 +76,7 @@ class Driver:
             player.item = Item()
         player.experiencePoints+=exp
         player.health+=health
+        player.savePlayer()
 
     """
     Method to get the random trend to use on this run
@@ -81,8 +85,6 @@ class Driver:
         trendsJSON = api.trends_place(1)
         trends = trendsJSON[0]
         x = random.randint(0,9)
-        while (len(trends['trends'][x]['name']) <= 15):
-           x = random.randint(0,9)
         return trends['trends'][x]['name']
 
     """
@@ -124,11 +126,12 @@ class Driver:
             msg+= "!"
         msg.format(scen)
         api.update_status(status = msg)
+        self.scen.finished = True
         time.sleep(60)
 
     def followUpTweet(self, option):
         msg = "{}"
-        msg.format(scen.getOption(option))
+        msg.format(scen.getFinish(option))
         api.update_status(status = msg)
         time.sleep(60)
 
