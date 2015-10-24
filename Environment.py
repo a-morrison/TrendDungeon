@@ -12,7 +12,8 @@ locations = ['Witch Hut', 'Cave', 'Crypt', 'Dark Forest', 'Swamp', 'Canyon', 'Cl
 jsonPath = './json/events.json'
 
 class Environment:
-    location = ''
+    location = ""
+    trend = ""
     generalText = ""
     flavorText = ""
     option1 = ""
@@ -24,8 +25,8 @@ class Environment:
     currentScenario = None
     creature = None
 
-    def __init__(self, player):
-        self.player = player
+    def __init__(self, trend):
+        self.trend = trend
 
     def loadScenario(self, scenario):
         self.currentScenario = scenario
