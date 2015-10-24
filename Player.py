@@ -128,7 +128,7 @@ class Player:
     def giveExperiencePoints(self, pointsToGive):
         self.experiencePoints += pointsToGive
 
-        if self.experiencePoints % 100 == 0:
+        if self.experiencePoints / 100 == 0:
             self.levelUp()
 
     """
