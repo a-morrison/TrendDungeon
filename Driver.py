@@ -52,6 +52,42 @@ def getReplies(lastID):
         return 3
 
 
+def loadScenFromFile(jsonFile):
+    s = Scenario()
+    with open(jsonFile, "r") as data_file:
+        data = json.load(data_file)
+
+    initial = data["Scenario"][0]["initial"]
+    s.initial = str(initial)
+
+    flavor = data["Scenario"][0]["flavorText"]
+    s.flavorText = str(flavor)
+
+    option1 = data["Scenario"][0]["option1"]
+    s.option1 = str(option1)
+
+    option2 = data["Scenario"][0]["option2"]
+    s.option2 = str(option2)
+
+    option3 = data["Scenario"][0]["option3"]
+    s.option3 = str(option3)
+
+    finish1 = data["Scenario"][0]["finish1"]
+    s.finish1 = str(finish1)
+
+    finish2 = data["Scenario"][0]["finish2"]
+    s.finish2 = str(finish2)
+
+    finish3 = data["Scenario"][0]["finish3"]
+    s.finish3 = str(finish3)
+
+    finished = data["Scenario"][0]["finished"]
+    s.finished = bool(finished)
+
+    s.loadCreature()
+
+    return s
+
 """
   "This class represents a driver for the game
   "Trend Dungeon.
@@ -80,8 +116,8 @@ class Driver:
             health = self.scen.amountHealth()
             updatePlayer(self.p,item,exp,health)
         tempEnviro = Environment(self.trend)
-        self.scen = tempEnviro.generateScenario(self.trend).saveScenario()
-        self.scen.loadFromFile(savedScenJSON)
+        tempEnviro.generateScenario(self.trend).saveScenario()
+        self.scen = loadScenFromFile(savedScenJSON)
 
 
     def updatePlayer(self,player,item,exp,health):
