@@ -106,7 +106,7 @@ class Player:
       "Returns the damage amount of the player.
     """
     def getDamage(self):
-        if item = 0:
+        if item == 0:
             return self.damage
         else:
             return item.damage * self.damage
