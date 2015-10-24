@@ -3,6 +3,7 @@ import Passwords as passwords
 import Player
 import Enviroment
 import Scenario
+import Items
 import json
 
 
@@ -16,12 +17,12 @@ auth.set_access_token(passwords.access_token, passwords.access_token_secret)
 api = tweepy.API(auth)
 
 
-def getReplies():
+def getReplies(lastID):
     countOne = 0;
     countTwo = 0;
     countThree = 0;
     for user in tweepy.Cursor(api.followers, screen_name = "TrendDungeon").items():
-        for tweet in tweepy.Cursor(api.user_timeline, screen_name= user.screen_name, count = 20).items():
+        for tweet in tweepy.Cursor(api.user_timeline, screen_name= user.screen_name, count = 20, since_id=lastID).items():
             print tweet.text
             if tweet.text.find('#1')>=0:
                 countOne+=1
@@ -60,10 +61,18 @@ class Driver:
             p = Player("./json/newPlayerTemplate")
         self.trend = self.getTrend()
         self.scen = Enviroment.loadScenario()
-        if self.scen.finished:
-            followUpTweet(self,getReplies())
+        if self.scen.finished or self.scen.initial == None:
+            followUpTweet(self,getReplies(p.lastID))
+            updatePlayer(player,item,exp,health)
             self.scen = Enviroment.generateScenerio(self.trend)
             Enviroment.saveScenario(scen)
+
+
+    def updatePlayer(player,item,exp,health):
+        if item:
+            player.item = Item()
+        player.experiencePoints+=exp
+        player.health+=health
 
     """
     Method to get the random trend to use on this run
@@ -121,4 +130,6 @@ def main():
     driver.announceTweet()
     driver.scenarioTweet()
     driver.statusTweet()
-    driver.optionsTweet()
+    driver.p.lastID = driver.optionsTweet()
+    driver.p.savePlayer()
+    driver.scen.saveToFile()
