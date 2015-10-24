@@ -7,6 +7,8 @@ import Items
 import json
 import time
 
+savedPlayerJSON = './json/player.json'
+
 """
 API initialization for the bot
 """
@@ -56,8 +58,8 @@ class Driver:
     Constructor
     """
     def __init__(self):
-        self.p = Player.loadPlayer()
-        if p.isDead:
+        self.p = Player.loadPlayer(savedPlayerJSON)
+        if p.isDead():
             p = Player("./json/newPlayerTemplate")
         self.trend = self.getTrend()
         self.scen = Enviroment.loadScenario()
@@ -108,7 +110,7 @@ class Driver:
     Method to post the Status Tweet using API
     """
     def statusTweet(self):
-        msg = "You have {0.health} Health, {0.experiencePoints} XP, and are level {0.level}."
+        msg = "You have {0.currentHealth} Health, {0.experiencePoints} XP, and are level {0.level}."
         if p.item != None:
             msg+=" You currently have the {0.item} Item."
         msg.format(self.p)
