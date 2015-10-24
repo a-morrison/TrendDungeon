@@ -41,12 +41,9 @@ class Player:
         damage = data["Player"][0]["damage"]
         self.damage = int(damage)
 
-<<<<<<< HEAD
         item = data["Player"][0]["item"]
         self.item = item
 
-=======
->>>>>>> 383ef8cf5ea5094aea27fd07706223723038f44a
         lastID = data["Player"][0]["lastID"]
         self.lastID = int(lastID)
 
