@@ -20,6 +20,7 @@ class Scenario:
     finish3 = ""
     finished = False
     hasItem = False
+    scenarioText = ""
 
     def __init__(self):
         self.loadFromFile(jsonPath)
