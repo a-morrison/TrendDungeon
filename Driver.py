@@ -66,7 +66,7 @@ class Driver:
     """
     def __init__(self):
         self.p = Player(savedPlayerJSON)
-        self.updatePlayer(self.p,True,0,0)
+        #self.updatePlayer(self.p,True,0,0)
         if self.p.isDead():
             self.p = Player("./json/newPlayerTemplate")
         self.trend = getTrend()
@@ -164,6 +164,7 @@ def main():
     driver.announceTweet()
     driver.scenarioTweet()
     driver.statusTweet()
+    driver.optionsTweet()
     driver.p.lastID = 1 #driver.optionsTweet().id
     driver.p.savePlayer()
     driver.scen.saveToFile()

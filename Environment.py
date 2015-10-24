@@ -8,7 +8,7 @@ from Scenario import Scenario
 from Creature import Creature
 from Items import Items
 
-locations = ['Witch Hut', 'Cave', 'Crypt', 'Dark Forest', 'Swamp', 'Canyon', 'Cliff', 'Shoppe']
+locations = ['Witch Hut', 'Cave', 'Crypt', 'Dark Forest', 'Swamp', 'Canyon', 'Cliff', 'Castle', 'Shoppe']
 jsonPath = './json/events.json'
 
 class Environment:
