@@ -16,32 +16,12 @@ def getOptions():
     countTwo = 0
     countThree = 0
 
-    return random.choice([1,2,3])
+    for user in tweepy.Cursor(api.followers, screen_name = "TrendDungeon").items():
+        print user.screen_name
 
-    for tweet in tweepy.Cursor(api.user_timeline, screen_name = "TrendDungeon").items():
-        print tweet.text
-        print tweet.in_reply_to_user_screen_name
-        if tweet.in_reply_to_user_screen_name == "@TrendDungeon":
-            print tweet.text
-            if tweet.text.find('#1')>=0:
-                countOne+=1
-                break
-            elif tweet.text.find('#2')>=0:
-                countTwo+=1
-                break
-            elif tweet.text.find('#3')>=0:
-                countThree+=1
-                break
-        break
 
-    if countOne>countTwo and countOne>countThree:
-        return 1
-    elif countTwo>countThree:
-        return 2
-    else:
-        return 3
 
-print getOptions()
+getOptions()
 
 """
 trendsJSON = api.trends_place(1)
