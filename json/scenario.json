@@ -7,7 +7,7 @@
                 null, 
                 null
             ], 
-            "initial": "You arrived at trend's Canyon.", 
+            "initial": "You arrived at #HelloEmblem3's Swamp.", 
             "finished": true, 
             "creature": {
                 "health": null, 
@@ -15,18 +15,18 @@
                 "damage": null
             }, 
             "finish1": [
-                "You defeat the Werewolf!", 
+                "You defeat the Orc!", 
                 true, 
                 20, 
                 8
             ], 
             "finish2": [
-                "You attempt to flee from the Werewolf!", 
+                "You attempt to flee from the Orc!", 
                 false, 
                 0, 
                 8
             ], 
-            "flavorText": "You see a fast and wild stream at the bottom along with a goblin encampment. Too dangerous to stay.", 
+            "flavorText": "There is a warm breath on your neck and you hear in a faint but strong voice, \"This is my swamp\".", 
             "option2": "Flee", 
             "option3": "", 
             "option1": "Fight"

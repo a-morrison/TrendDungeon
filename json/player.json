@@ -1,15 +1,15 @@
 {
     "Player": [
         {
-            "experiencePoints": "54", 
+            "experiencePoints": "70", 
             "totalHealth": "16", 
             "damage": "1", 
             "item": {
-                "name": "Bone Lute of Ether", 
-                "damage": 0
+                "name": "Bone Hammer of Frost", 
+                "damage": 2
             }, 
             "currentHealth": "16", 
-            "lastID": "1", 
+            "lastID": "658094318016700416", 
             "level": "7"
         }
     ]
