@@ -41,8 +41,9 @@ class Environment:
         self.scenario.setFinishedOne(self.finished1)
         self.scenario.setFinishedTwo(self.finished2)
         self.scenario.setFinishedThree(self.finished3)
+        #self.scenario.setCreature(self.creature)
         self.scenario.saveToFile()
-
+        
     def generateScenario(self, trend):
         self.location = random.choice(locations)
         self.getGeneralText(trend)
@@ -148,6 +149,7 @@ class Environment:
 
     def spawnCreature(self):
         self.creature = Creature()
+        self.scenario.setCreature(self.creature)
 
     def getNoun(self, trend):
         trend = trend.replace(" ","")

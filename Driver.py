@@ -9,7 +9,7 @@ import time
 import random
 
 
-sleepTime = 45
+sleepTime = 2
 savedPlayerJSON = './json/player.json'
 savedScenJSON = './json/scenario.json'
 
@@ -82,7 +82,7 @@ def loadScenFromFile(jsonFile):
     finished = data["Scenario"][0]["finished"]
     s.finished = bool(finished)
 
-    s.loadCreature()
+    #s.loadCreature()
 
     return s
 
@@ -173,8 +173,9 @@ class Driver:
     def optionsTweet(self):
         temp = self.scen.getEncounterText()
         msg = ""
-        if self.scen.creature != None:
-            msg+= "A {} attacks!".format(self.scen.creature)
+        
+        if self.scen.option1 == "Fight":
+            msg+= "A {} attacks! ".format(self.scen.creature.getCreatureType())
         msg += "Follow and reply with #1 to {0.option1}"
         if self.scen.option2 != "":
             msg+=", #2 to {0.option2}"

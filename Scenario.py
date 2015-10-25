@@ -4,7 +4,7 @@
 """
 
 import json
-import Creature
+from Creature import Creature
 import random
 
 jsonPath = "./json/scenario.json"
@@ -12,7 +12,7 @@ jsonPath = "./json/scenario.json"
 class Scenario:
     initial = ""
     falvorText = ""
-    creature = None
+    creature = Creature()  #{'type':None,'health':None,'damage':None}
     option1 = ""
     option2 = ""
     option3 = ""
@@ -103,8 +103,9 @@ class Scenario:
         creatureHealth = data["Scenario"][0]["creature"]["health"]
         creatureDamage = data["Scenario"][0]["creature"]["damage"]
 
+        print str(creatureType)
         if creatureType != None:
-            self.creature.setCreatureType(creatureType)
+            self.creature.setCreatureType(str(creatureType))
             self.creature.setCreatureHealth(int(creatureHealth))
             self.creature.setCreatureDamage(int(creatureDamage))
 
@@ -116,13 +117,13 @@ class Scenario:
             data = json.load(data_file)
 
         tmp = data["Scenario"][0]["creature"]["type"]
-        data["Scenario"][0]["creature"]["type"] = str(self.creature.getCreatureType)
+        data["Scenario"][0]["creature"]["type"] = str(self.creature.getCreatureType())
 
         tmp = data["Scenario"][0]["creature"]["health"]
-        data["Scenario"][0]["creature"]["health"] = int(self.creature.getCreatureHealth)
+        data["Scenario"][0]["creature"]["health"] = int(self.creature.getCreatureHealth())
 
         tmp = data["Scenario"][0]["creature"]["damage"]
-        data["Scenario"][0]["creature"]["damage"] = int(self.creature.getCreatureDamage)
+        data["Scenario"][0]["creature"]["damage"] = int(self.creature.getCreatureDamage())
 
         with open(jsonPath, "w") as data_file:
             data_file.write(json.dumps(data, indent=4,
