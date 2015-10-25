@@ -1,21 +1,21 @@
 {
     "Scenario": [
         {
-            "flavorText": "You take in ease in the fact you can now rest and look at the wares.", 
-            "initial": "You arrived at #TravisWilson's Shoppe.", 
-            "option1": "Take Item", 
+            "flavorText": "The hut creaks in the howling wind. You feel uneasy to move any closer.", 
+            "initial": "You arrived at the Witch #CameronSmith's Hut.", 
+            "option1": "Leave", 
             "finished": true, 
             "finish1": [
-                "You leave the Shoppe.", 
+                "You leave the Witch Hut.", 
                 true, 
                 0, 
                 0
             ], 
             "finish2": [
-                "You leave the Shoppe.", 
-                false, 
-                0, 
-                0
+                null, 
+                null, 
+                null, 
+                null
             ], 
             "finish3": [
                 null, 
@@ -23,7 +23,7 @@
                 null, 
                 null
             ], 
-            "option2": "Leave", 
+            "option2": "", 
             "option3": "", 
             "creature": {
                 "type": null, 
