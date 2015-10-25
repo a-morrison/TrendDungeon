@@ -89,8 +89,8 @@ class Environment:
     def startEncounter(self):
         self.spawnCreature()
 
-        option1 = "Fight"
-        option2 = "Flee"
+        self.option1 = "Fight"
+        self.option2 = "Flee"
 
         self.setEncounterOptionOne()
         self.setEncounterOptionTwo()
@@ -119,13 +119,13 @@ class Environment:
             addedText = self.getFlavorText()
 
         self.flavorText = self.flavorText + " " + addedText
-        self.finished1 = "You leave the {}.".format(self.location)
-        self.finished2 = "You leave the {}.".format(self.location)
+        self.finished1[0] = "You leave the {}.".format(self.location)
+        self.finished2[0] = "You leave the {}.".format(self.location)
         self.finished1[1]=(True)
         self.finished1[2]=(0)
         self.finished1[3]=(0)
         
-        self.finished2[1]=(True)
+        self.finished2[1]=(False)
         self.finished2[2]=(0)
         self.finished2[3]=(0)
 

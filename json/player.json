@@ -1,13 +1,13 @@
 {
     "Player": [
         {
-            "item": {
-                "name": "Gem Bow of Ground", 
-                "damage": 2
-            }, 
+            "experiencePoints": "54", 
             "totalHealth": "16", 
             "damage": "1", 
-            "experiencePoints": "14", 
+            "item": {
+                "name": "Bone Lute of Ether", 
+                "damage": 0
+            }, 
             "currentHealth": "16", 
             "lastID": "1", 
             "level": "7"
