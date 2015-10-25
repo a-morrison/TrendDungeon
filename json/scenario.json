@@ -7,7 +7,6 @@
                 null, 
                 null
             ], 
-            "finied": 0, 
             "initial": "You arrived at trend's Canyon.", 
             "finished": true, 
             "creature": {
@@ -16,21 +15,21 @@
                 "damage": null
             }, 
             "finish1": [
-                "You defeat the Ghoul!", 
+                "You defeat the Werewolf!", 
                 true, 
                 20, 
-                10
+                8
             ], 
             "finish2": [
-                "You attempt to flee from the Ghoul!", 
+                "You attempt to flee from the Werewolf!", 
                 false, 
                 0, 
-                10
+                8
             ], 
             "flavorText": "You see a fast and wild stream at the bottom along with a goblin encampment. Too dangerous to stay.", 
-            "option2": "", 
+            "option2": "Flee", 
             "option3": "", 
-            "option1": ""
+            "option1": "Fight"
         }
     ]
 }
