@@ -89,8 +89,8 @@ class Environment:
     def startEncounter(self):
         self.spawnCreature()
 
-        option1 = "Fight"
-        option2 = "Flee"
+        self.option1 = "Fight"
+        self.option2 = "Flee"
 
         self.setEncounterOptionOne()
         self.setEncounterOptionTwo()
