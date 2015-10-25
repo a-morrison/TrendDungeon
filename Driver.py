@@ -175,11 +175,11 @@ class Driver:
     def optionsTweet(self):
         temp = self.scen.getEncounterText()
         msg = "{1} Follow and reply with #1 to {0.option1}"
-        if self.scen.option2 != "None":
+        if self.scen.option2 != "":
             msg+=", #2 to {0.option2}"
         else:
             msg+="!"
-        if self.scen.option3 != "None":
+        if self.scen.option3 != "":
             msg+=" , or #3 to {0.option3}!"
         else:
             msg+= "!"
