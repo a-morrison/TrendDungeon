@@ -1,35 +1,35 @@
 {
     "Scenario": [
         {
+            "flavorText": "You take in ease in the fact you can now rest and look at the wares.", 
+            "initial": "You arrived at #TravisWilson's Shoppe.", 
+            "option1": "Take Item", 
+            "finished": true, 
+            "finish1": [
+                "You leave the Shoppe.", 
+                true, 
+                0, 
+                0
+            ], 
+            "finish2": [
+                "You leave the Shoppe.", 
+                false, 
+                0, 
+                0
+            ], 
             "finish3": [
                 null, 
                 null, 
                 null, 
                 null
             ], 
-            "initial": "You arrived at #HelloEmblem3's Swamp.", 
-            "finished": true, 
-            "creature": {
-                "health": null, 
-                "type": null, 
-                "damage": null
-            }, 
-            "finish1": [
-                "You defeat the Orc!", 
-                true, 
-                20, 
-                8
-            ], 
-            "finish2": [
-                "You attempt to flee from the Orc!", 
-                false, 
-                0, 
-                8
-            ], 
-            "flavorText": "There is a warm breath on your neck and you hear in a faint but strong voice, \"This is my swamp\".", 
-            "option2": "Flee", 
+            "option2": "Leave", 
             "option3": "", 
-            "option1": "Fight"
+            "creature": {
+                "type": null, 
+                "health": null, 
+                "damage": null
+            }
         }
     ]
 }

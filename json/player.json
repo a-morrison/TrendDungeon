@@ -1,13 +1,13 @@
 {
     "Player": [
         {
-            "experiencePoints": "70", 
+            "item": {
+                "name": "Gem Bow of Lightning", 
+                "damage": 0
+            }, 
             "totalHealth": "16", 
             "damage": "1", 
-            "item": {
-                "name": "Bone Hammer of Frost", 
-                "damage": 2
-            }, 
+            "experiencePoints": "72", 
             "currentHealth": "16", 
             "lastID": "658094318016700416", 
             "level": "7"

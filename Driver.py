@@ -199,7 +199,7 @@ class Driver:
             msg2+=" You currently have the {0.item.name} Item."
         msg2 = msg2.format(self.p)
         msg += msg2
-        print msg #api.update_status(status = msg)
+        api.update_status(status = msg)
         time.sleep(sleepTime)
 
 """
