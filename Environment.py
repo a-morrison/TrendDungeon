@@ -63,9 +63,15 @@ class Environment:
 
     def giveItem(self):
         self.scenario.hasItem = True
+        self.finished1[0] = "You recieved an item!"
         self.finished1[1] = True
         self.finished1[2] = 0
         self.finished1[3] = 0
+
+        self.finished2[0] = "You passed on an item!"
+        self.finished2[1] = False
+        self.finished2[2] = 0
+        self.finished2[3] = 0
 
     def exploreRoom(self):
         self.option1 = "Leave"
