@@ -9,7 +9,7 @@ import time
 import random
 
 
-sleepTime = 2
+sleepTime = 45
 savedPlayerJSON = './json/player.json'
 savedScenJSON = './json/scenario.json'
 
@@ -27,8 +27,6 @@ def getReplies(lastID):
     countOne = 0
     countTwo = 0
     countThree = 0
-
-    return 1
 
     for user in tweepy.Cursor(api.followers, screen_name = "TrendDungeon").items():
         for tweet in tweepy.Cursor(api.user_timeline, screen_name= user.screen_name, count = 20, since_id=lastID).items():
@@ -174,16 +172,18 @@ class Driver:
     """
     def optionsTweet(self):
         temp = self.scen.getEncounterText()
-        msg = "{1} Follow and reply with #1 to {0.option1}"
+        msg = "Follow and reply with #1 to {0.option1}"
         if self.scen.option2 != "":
             msg+=", #2 to {0.option2}"
         if self.scen.option3 != "":
             msg+=" , or #3 to {0.option3}"
         msg+= "!"
-        msg = msg.format(self.scen,temp)
+        msg = msg.format(self.scen)
         self.scen.finished = True
+        print temp
         print msg
-        #return api.update_status(status = msg)
+        api.update_status(status = temp)
+        return api.update_status(status = msg)
         time.sleep(sleepTime)
 
     def followUpTweet(self, option):
@@ -216,9 +216,8 @@ def main():
     driver = Driver()
     #driver.announceTweet()
     #driver.scenarioTweet()
-    driver.optionsTweet()
     #driver.statusTweet()
-    driver.p.lastID = 1 #driver.optionsTweet().id
+    driver.p.lastID = driver.optionsTweet().id
     driver.p.savePlayer()
     driver.scen.saveToFile()
 
