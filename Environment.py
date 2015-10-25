@@ -119,8 +119,8 @@ class Environment:
             addedText = self.getFlavorText()
 
         self.flavorText = self.flavorText + " " + addedText
-        self.finished1 = "You leave the {}.".format(self.location)
-        self.finished2 = "You leave the {}.".format(self.location)
+        self.finished1[0] = "You leave the {}.".format(self.location)
+        self.finished2[0] = "You leave the {}.".format(self.location)
         self.finished1[1]=(True)
         self.finished1[2]=(0)
         self.finished1[3]=(0)
