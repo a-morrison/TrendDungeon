@@ -125,7 +125,7 @@ class Environment:
         self.finished1[2]=(0)
         self.finished1[3]=(0)
         
-        self.finished2[1]=(True)
+        self.finished2[1]=(False)
         self.finished2[2]=(0)
         self.finished2[3]=(0)
 
