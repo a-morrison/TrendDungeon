@@ -73,6 +73,8 @@ class Environment:
         self.finished2[2] = 0
         self.finished2[3] = 0
 
+        self.option1 = "Leave"
+
     def exploreRoom(self):
         self.option1 = "Leave"
         addedText = self.getFlavorText()
