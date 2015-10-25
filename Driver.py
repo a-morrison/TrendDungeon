@@ -102,7 +102,7 @@ class Driver:
         self.p = Player(savedPlayerJSON)
         #self.updatePlayer(self.p,True,0,0)
         if self.p.isDead():
-            self.p = Player("./json/newPlayerTemplate")
+            self.p = Player("./json/newPlayerTemplate.json")
         self.trend = getTrend()
         #print self.trend
         self.scen = Scenario()

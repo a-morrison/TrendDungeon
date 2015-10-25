@@ -1,21 +1,21 @@
 {
     "Scenario": [
         {
-            "flavorText": "The hut creaks in the howling wind. You feel uneasy to move any closer.", 
-            "initial": "You arrived at the Witch #CameronSmith's Hut.", 
-            "option1": "Leave", 
+            "flavorText": "You see a fast and wild stream at the bottom along with a goblin encampment. Too dangerous to stay.", 
+            "initial": "You arrived at #TravisWilson's Canyon.", 
+            "option1": "Fight", 
             "finished": true, 
             "finish1": [
-                "You leave the Witch Hut.", 
+                "You defeat the Undead!", 
                 true, 
-                0, 
-                0
+                20, 
+                3
             ], 
             "finish2": [
-                null, 
-                null, 
-                null, 
-                null
+                "You attempt to flee from the Undead!", 
+                false, 
+                0, 
+                3
             ], 
             "finish3": [
                 null, 
@@ -23,7 +23,7 @@
                 null, 
                 null
             ], 
-            "option2": "", 
+            "option2": "Flee", 
             "option3": "", 
             "creature": {
                 "type": null, 
