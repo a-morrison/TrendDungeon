@@ -120,7 +120,7 @@ class Environment:
         while addedText == self.flavorText:
             addedText = self.getFlavorText()
 
-        self.flavorText = self.flavorText + " " + addedText
+        self.flavorText = self.flavorText
         self.finished1[0] = "You leave the {}.".format(self.location)
         self.finished2[0] = "You leave the {}.".format(self.location)
         self.finished1[1]=(True)
