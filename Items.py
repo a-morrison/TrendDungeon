@@ -1,6 +1,6 @@
 import random
 
-elements = ['Fire','Frost','Ground', 'Ether', 'Lightning']
+elements = ['Fire','Frost','Earth', 'Ether', 'Lightning']
 materials = ['Iron','Gem','Oak','Bone','Air']
 itemTypes = ['Sword','Crystal','Hammer','Bow','Lute']
 
