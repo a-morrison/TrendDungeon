@@ -131,7 +131,7 @@ class Driver:
 
 
     def updatePlayer(self,player,item,exp,health):
-        print item , exp, health
+        #print item , exp, health
         if item:
             player.item = Items(None)
         player.giveExperiencePoints(int(exp)/int(player.level))
@@ -177,12 +177,9 @@ class Driver:
         msg = "{1} Follow and reply with #1 to {0.option1}"
         if self.scen.option2 != "":
             msg+=", #2 to {0.option2}"
-        else:
-            msg+="!"
         if self.scen.option3 != "":
-            msg+=" , or #3 to {0.option3}!"
-        else:
-            msg+= "!"
+            msg+=" , or #3 to {0.option3}"
+        msg+= "!"
         msg = msg.format(self.scen,temp)
         self.scen.finished = True
         print msg
@@ -193,6 +190,11 @@ class Driver:
         msg = "{}"
         temp = self.scen.getFinished(option)[0]
         msg = msg.format(temp)
+        msg2 = " You have {0.currentHealth} Health, {0.experiencePoints} XP, and are level {0.level}."
+        if self.p.item.name != "":
+            msg2+=" You currently have the {0.item.name} Item."
+        msg2 = msg2.format(self.p)
+        msg += msg2
         print msg #api.update_status(status = msg)
         time.sleep(sleepTime)
 
@@ -212,10 +214,10 @@ def getTrend():
 
 def main():
     driver = Driver()
-    driver.announceTweet()
-    driver.scenarioTweet()
-    driver.statusTweet()
+    #driver.announceTweet()
+    #driver.scenarioTweet()
     driver.optionsTweet()
+    #driver.statusTweet()
     driver.p.lastID = 1 #driver.optionsTweet().id
     driver.p.savePlayer()
     driver.scen.saveToFile()
